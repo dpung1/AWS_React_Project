@@ -5,6 +5,10 @@ import { Route, Routes } from 'react-router-dom';
 import { Global } from '@emotion/react';
 import { GSCommon } from './styles/common';
 import Save from './pages/Save/Save';
+import Feed from './pages/Feed/Feed';
+import Timeline from './pages/Timeline/Timeline';
+import Review from './pages/Review/Review';
+import Order from './pages/Order/Order';
 
 function App() {
   return (
@@ -12,10 +16,10 @@ function App() {
       <Reset />
       <Global styles={GSCommon} />
         <Routes>
-          <Route path='/feed'/>
-          <Route path='/timeline'/>
-          <Route path='/review'/>
-          <Route path='/order'/>
+          <Route path='/feed' element={ <Feed />}/>
+          <Route path='/timeline' element={ <Timeline />}/>
+          <Route path='/review' element={ <Review />}/>
+          <Route path='/order' element={ <Order />}/>
           <Route path='/save' element={ <Save />}/>
         </Routes>
     </>

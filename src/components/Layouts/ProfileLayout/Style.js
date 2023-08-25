@@ -31,6 +31,7 @@ export const SProfileBox = css`
     width: 64px;
     height: 64px;
     overflow: hidden;
+    cursor: pointer;
 `;
 
 export const SLogin = css`
@@ -41,6 +42,7 @@ export const SLogin = css`
     font-size: 17px;
     font-weight: 500;
     color: #ffff;
+    cursor: pointer;
 `;
 
 export const SLoginLink = css`
@@ -69,6 +71,7 @@ export const SReviewButton = css`
     font-weight: 700;
     color: #ffff;
     background-color: #0cc5a4;
+    cursor: pointer;
 `;
 
 export const SReviewIcon = css`
@@ -91,6 +94,7 @@ export const SMissionButton = css`
     font-weight: 700;
     color: #ffff;
     background-color: #0cc5a4;
+    cursor: pointer;
 `;
 
 
