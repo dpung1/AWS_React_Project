@@ -22,6 +22,7 @@ export const SFirstContainer = css`
     align-items: center;
     
     font-size: 14px;
+    font-weight: 500;
     color: #8f8f8f;
     width: 115px;
     height: 20px;
@@ -35,6 +36,7 @@ export const SSecondContainer = css`
     
     margin-top: 12px;
     font-size: 12px;
+    font-weight: 500;
     color: #8f8f8f;
     width: 285px;
     height: 20px;
@@ -48,6 +50,7 @@ export const SThirdContainer = css`
     
     margin-top: 10px;
     font-size: 13px;
+    font-weight: 500;
     color: #8f8f8f;
     height: 20px;
     cursor: pointer;

@@ -12,7 +12,7 @@ function Feed(props) {
             <ProfileLayout />
             <PagesChangeLayout />
             <MainContainer>
-                안녕
+                
             </MainContainer>
             <BottomLayout />
         </div>
