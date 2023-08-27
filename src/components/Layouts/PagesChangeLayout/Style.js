@@ -13,7 +13,7 @@ export const SContainer = css`
     margin: 0px auto;
     width: 375px;
     height: 51px;
-    `;
+`;
 
 export const SFeed = (pathname) => css`
     position: relative; 
@@ -36,7 +36,7 @@ export const SFeed = (pathname) => css`
     }
     font-weight: ${pathname === '/feed' ? '900' : '400'};
     color: ${pathname === '/feed' ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
-    `;
+`;
 
 export const STimeLine = (pathname) => css`
     position: relative; 
@@ -57,9 +57,10 @@ export const STimeLine = (pathname) => css`
         background-color: ${pathname === '/timeline' ? '#ffffff' : 'transparent'};
         border-radius: 1.5px 1.5px 1.5px 1.5px;
     }
+    
     font-weight: ${pathname === '/timeline' ? '900' : '400'};
     color: ${pathname === '/timeline' ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
-    `;
+`;
 
 export const SReview = (pathname) => css`
     position: relative; 
@@ -82,7 +83,7 @@ export const SReview = (pathname) => css`
     }
     font-weight: ${pathname === '/review' ? '900' : '400'};
     color: ${pathname === '/review' ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
-    `;
+`;
 
 export const SOrder = (pathname) => css`
     position: relative; 
@@ -105,7 +106,7 @@ export const SOrder = (pathname) => css`
     }
     font-weight: ${pathname === '/order' ? '900' : '400'};
     color: ${pathname === '/order' ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
-    `;
+`;
 
 export const SSave = (pathname) => css`
     position: relative; 
@@ -127,6 +128,6 @@ export const SSave = (pathname) => css`
     }
     font-weight: ${pathname === '/save' ? '900' : '400'};
     color: ${pathname === '/save' ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
-    `;
+`;
 
 

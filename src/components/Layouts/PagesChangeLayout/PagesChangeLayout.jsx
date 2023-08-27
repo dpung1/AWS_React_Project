@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 function PagesChangeLayout(props) {
     const location = useLocation();
-
+    
     return (
         <div css={S.SLayout}>
             <div css={S.SContainer}>

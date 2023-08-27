@@ -5,6 +5,7 @@ import PagesChangeLayout from '../../components/Layouts/PagesChangeLayout/PagesC
 import BottomLayout from '../../components/Layouts/BottomLayout/BottomLayout';
 import FeedHeaderLayout from '../../components/Layouts/FeedHeaderLayout/FeedHeaderLayout';
 import FeedTitleLayout from '../../components/Layouts/FeedTitleLayout/FeedTitleLayout';
+import FeedContainer from '../../components/Containers/FeedContainer/FeedContainer';
 
 function Feed(props) {
     return (
@@ -14,6 +15,7 @@ function Feed(props) {
             <PagesChangeLayout />
             <FeedHeaderLayout />
             <FeedTitleLayout />
+            <FeedContainer />
             <BottomLayout />
         </div>
     );
