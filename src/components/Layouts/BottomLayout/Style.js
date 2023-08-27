@@ -5,8 +5,8 @@ export const SLayout = css`
 `;
 
 export const SSpan = css`
-    width: auto;
-    height: auto;
+    display: inline-block;
+    white-space: nowrap;
 `;
 
 export const SContainer = css`
@@ -17,6 +17,8 @@ export const SContainer = css`
 `;
 
 export const STextBoundary = css`
+    display: inline-block;
+    white-space: nowrap;
     color: #e1e1e1;
     cursor: default;
 `;
