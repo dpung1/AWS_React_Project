@@ -8,21 +8,21 @@ function BottomLayout(props) {
         <div css={S.SLayout}>
             <div css={S.SContainer}>
                 <div css={S.SFirstContainer}>
-                    <span>로그인</span>
+                    <span css={S.SSpan}>로그인</span>
                     <span css={S.STextBoundary}>|</span>
-                    <span>전체서비스</span>
+                    <span css={S.SSpan}>전체서비스</span>
                 </div>
                 <div css={S.SSecondContainer}>
-                    <span>이용정책</span>
+                    <span css={S.SSpan}>이용정책</span>
                     <span css={S.STextBoundary}>|</span>
-                    <span>MY플레이스 고객센터</span>
+                    <span css={S.SSpan}>MY플레이스 고객센터</span>
                     <span css={S.STextBoundary}>|</span>
-                    <span>신고센터</span>
+                    <span css={S.SSpan}>신고센터</span>
                     <span css={S.STextBoundary}>|</span>
-                    <span>공지사항</span>
+                    <span css={S.SSpan}>공지사항</span>
                 </div>
                 <div css={S.SThirdContainer}>
-                    <span>© NAVER Corp.</span>
+                    <span css={S.SSpan}>© NAVER Corp.</span>
                 </div>
             </div>
         </div>

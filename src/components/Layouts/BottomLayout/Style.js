@@ -4,6 +4,11 @@ export const SLayout = css`
     padding: 42px 0px 36px 0px;
 `;
 
+export const SSpan = css`
+    width: auto;
+    height: auto;
+`;
+
 export const SContainer = css`
     display: flex;
     flex-direction: column;
