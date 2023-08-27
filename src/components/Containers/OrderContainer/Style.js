@@ -36,6 +36,7 @@ export const SLoginButton = css`
     text-align: center;
     color: #ffffff;
     background-color: #03c75a;
+    cursor: pointer;
 `;
 
 export const SNeverIcon = css`
@@ -100,6 +101,7 @@ export const SCheckButton = css`
     text-align: center;
     color: #ffffff;
     background-color: #383838;
+    cursor: pointer;
 `;
 
 export const SStrongText = css`

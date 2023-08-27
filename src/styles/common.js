@@ -4,4 +4,6 @@ export const GSCommon = css`
     * {
         box-sizing: border-box;
     }
+
+    
 `;

@@ -2,8 +2,9 @@ import React from 'react';
 import HeaderLayout from '../../components/Layouts/HeaderLayout/HeaderLayout';
 import ProfileLayout from '../../components/Layouts/ProfileLayout/ProfileLayout';
 import PagesChangeLayout from '../../components/Layouts/PagesChangeLayout/PagesChangeLayout';
-import MainContainer from '../../components/Containers/MainContainer/MainContainer';
 import BottomLayout from '../../components/Layouts/BottomLayout/BottomLayout';
+import FeedHeaderLayout from '../../components/Layouts/FeedHeaderLayout/FeedHeaderLayout';
+import FeedTitleLayout from '../../components/Layouts/FeedTitleLayout/FeedTitleLayout';
 
 function Feed(props) {
     return (
@@ -11,9 +12,8 @@ function Feed(props) {
             <HeaderLayout />
             <ProfileLayout />
             <PagesChangeLayout />
-            <MainContainer>
-                
-            </MainContainer>
+            <FeedHeaderLayout />
+            <FeedTitleLayout />
             <BottomLayout />
         </div>
     );

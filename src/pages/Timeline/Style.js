@@ -78,4 +78,5 @@ export const SButton = css`
     font-size: 16px;
     background-color: transparent;
     color: #ffffff;
+    cursor: pointer;
 `;
