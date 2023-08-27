@@ -16,6 +16,7 @@ function App() {
       <Reset />
       <Global styles={GSCommon} />
         <Routes>
+          <Route path='/' element={ <Feed />}/>
           <Route path='/feed' element={ <Feed />}/>
           <Route path='/timeline' element={ <Timeline />}/>
           <Route path='/review' element={ <Review />}/>
