@@ -31,7 +31,7 @@ export const SFirstContainer = css`
     font-size: 14px;
     font-weight: 500;
     color: #8f8f8f;
-    width: 115px;
+    width: 118px;
     height: 20px;
     cursor: pointer;
     `;
@@ -45,7 +45,7 @@ export const SSecondContainer = css`
     font-size: 12px;
     font-weight: 500;
     color: #8f8f8f;
-    width: 285px;
+    width: 288px;
     height: 20px;
     cursor: pointer;
     `;
