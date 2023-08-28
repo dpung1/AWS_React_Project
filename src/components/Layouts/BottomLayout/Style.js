@@ -1,7 +1,8 @@
 import { css } from "@emotion/react"
 
-export const SLayout = css`
+export const SLayout = (pathname) => css`
     padding: 42px 0px 36px 0px;
+    background-color: ${ pathname === "/feed" ? "#fafafa" : "none"};
 `;
 
 export const SSpan = css`

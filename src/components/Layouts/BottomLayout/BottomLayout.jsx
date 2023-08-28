@@ -2,10 +2,13 @@ import React from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
+import { useLocation } from 'react-router-dom';
 
 function BottomLayout(props) {
+    const location = useLocation("");
+
     return (
-        <div css={S.SLayout}>
+        <div css={S.SLayout(location.pathname)}>
             <div css={S.SContainer}>
                 <div css={S.SFirstContainer}>
                     <span css={S.SSpan}>로그인</span>

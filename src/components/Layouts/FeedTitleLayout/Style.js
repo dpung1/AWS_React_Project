@@ -10,7 +10,7 @@ export const SContainer = css`
     display: flex;
     align-items: center;
 
-    padding: 0px 17px;
+    padding: 0px 20px;
     width: 720px;
     height: 48px;
     overflow-x: auto;
@@ -52,3 +52,4 @@ export const SButtonsSelect = css`
     background-color: #424242;
     cursor: pointer;
 `;
+

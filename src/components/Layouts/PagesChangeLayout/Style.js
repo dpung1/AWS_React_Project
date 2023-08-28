@@ -1,8 +1,18 @@
 import { css } from "@emotion/react"
 
+
 export const SLayout = css`
     padding: 0px 20px 0px 20px;
     background-color: #06b495;
+`;
+
+export const SHeaderFixed = css`
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+    background-color: white;
+    z-index: 100;
+    transition: all 0.3s ease;
 `;
 
 export const SContainer = css`

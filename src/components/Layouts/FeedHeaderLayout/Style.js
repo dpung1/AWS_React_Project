@@ -11,7 +11,7 @@ export const SContainer = css`
     justify-content: space-between;
 
     margin: 0px auto;
-    padding: 6px 17px;
+    padding: 6px 20px;
     width: 720px;
     height: 66px;
 `;
@@ -131,7 +131,7 @@ export const SBoundary = css`
     justify-content: center;
     align-items: center;
 
-    margin-right: 5px;
+    margin-right: 6px;
     border: 1px solid #dbdbdb;
     border-radius: 2px;
     width: 2px;
@@ -143,7 +143,8 @@ export const SLocationButton = css`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
+    margin: 1px -7px 0px 0px;
     border: none;
     font-size: 15px;
     font-weight: 600;

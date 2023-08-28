@@ -16,7 +16,7 @@ function Feed(props) {
             <FeedHeaderLayout />
             <FeedTitleLayout />
             <FeedContainer />
-            <BottomLayout />
+            <BottomLayout/>
         </div>
     );
 }
