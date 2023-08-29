@@ -30,7 +30,7 @@ function FeedTravelingContent(props) {
                         </div>
                     </div>
                     <div css={S.SImgContainer}>
-                        <button css={S.SImgButtonBox}>
+                        <div css={S.SImgButtonBox}>
                             <div css={S.SImgContainerBox}>
                                 <img src={Img} css={S.SImgLeft}/>
                                     <div css={S.SArray}>
@@ -42,11 +42,11 @@ function FeedTravelingContent(props) {
                                 <HiLocationMarker css={S.SLocationIcon}/>
                                 <span css={S.SLocationText}>제주시 과거</span>
                                 </button>
-                        </button>
+                        </div>
                     </div>
                     <div css ={S.STextContent}>
                         <span css={S.SText}>
-                            작년 제주도 어딘지 기억은 안나지만 돌아다닌곳 🚗
+                            작년 제주도 어딘지 기억은 안나지만 놀러간 곳 🚗
                         </span>
                     </div>
                     <div css={S.STagContainer}>

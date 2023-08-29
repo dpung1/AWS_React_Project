@@ -30,7 +30,7 @@ function FeedITContent(props) {
                         </div>
                     </div>
                     <div css={S.SImgContainer}>
-                        <button css={S.SImgButtonBox}>
+                        <div css={S.SImgButtonBox}>
                             <div css={S.SImgContainerBox}>
                                 <img src={Img} css={S.SImgLeft}/>
                                     <div css={S.SArray}>
@@ -42,7 +42,7 @@ function FeedITContent(props) {
                                 <HiLocationMarker css={S.SLocationIcon}/>
                                 <span css={S.SLocationText}>부산광역시 부산진구 최신</span>
                             </button>
-                        </button>
+                        </div>
                     </div>
                     <div css ={S.STextContent}>
                         <span css={S.SText}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
@@ -120,9 +120,20 @@ function FeedTitleLayout(props) {
         },
     ]
 
+    const scrollRef = useRef(null);
+
+    const handleScroll = (scrollAmount) => {
+        const container = scrollRef.current;
+        if (container) {
+            container.scrollLeft += scrollAmount;
+        }
+    };
+
     return (
         <div css={S.SLayout}>
             <div css={S.SContainer}>
+                <button css={S.SLeftButton} onClick={() => handleScroll(-720)}>⟨</button>
+            <div css={S.SBox} ref={scrollRef}>
                 <div css={S.SContent}>
                     {titles.map(title => <Link
                                             key={title.id}
@@ -133,6 +144,8 @@ function FeedTitleLayout(props) {
                                             {title.name}
                                         </Link>)}
                 </div>
+            </div>
+                <button css={S.SRightButton} onClick={() => handleScroll(+720)}>⟩</button>
             </div>
         </div>
     );

@@ -7,29 +7,54 @@ export const SLayout = css`
 `;
 
 export const SContainer = css`
+    position: relative;
     display: flex;
-    align-items: center;
 
     padding: 0px 20px;
     width: 720px;
-    height: 48px;
+`;
+
+export const SLeftButton = css`
+    position: absolute;
+    top: 10px;
+    left: -11.5px;
+
+    border: none;
+    width: 46px;
+    height: 36px;
+    font-size: 20px;
+    font-weight: 500;
+    color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    :hover {
+        color: #666666;
+    }
+`;
+
+export const SBox = css`
+    display: flex;
+    align-items: center;
+
     overflow-x: auto;
     ::-webkit-scrollbar {
         display: none;
     }
+    scroll-behavior: smooth;
 `;
 
 export const SContent = css`
     display: flex;
+
     padding: 10px 0px 2px 0px;
 `;
 
 export const SButtons = css`
     display: flex;
+    flex-shrink:  0;
     justify-content: center;
     align-items: center;
     
-    flex-shrink:  0;
     margin-right: 6px;
     padding: 0px 13px;
     border: 1px solid #eaeef2;
@@ -45,10 +70,10 @@ export const SButtons = css`
 
 export const SButtonsSelect = css`
     display: flex;
+    flex-shrink:  0;
     justify-content: center;
     align-items: center;
 
-    flex-shrink:  0;
     margin-right: 6px;
     padding: 0px 13px;
     border: 1px solid #eaeef2;
@@ -61,6 +86,25 @@ export const SButtonsSelect = css`
     background-color: #424242;
     cursor: pointer;
 `;
+
+export const SRightButton = css`
+    position: absolute;
+    top: 10px;
+    right: -11.5px;
+
+    border: none;
+    height: 36px;
+    width: 46px;
+    font-size: 20px;
+    font-weight: 500;
+    color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    :hover {
+        color: #666666;
+    }
+`;
+
 
 
 
