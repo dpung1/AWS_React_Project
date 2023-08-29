@@ -19,6 +19,7 @@ export const SContainer = css`
 
 export const STextBoundary = css`
     display: inline-block;
+    margin: 0px 9px;
     white-space: nowrap;
     color: #e1e1e1;
     cursor: default;
@@ -26,7 +27,7 @@ export const STextBoundary = css`
 
 export const SFirstContainer = css`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     
     font-size: 14px;
@@ -39,7 +40,7 @@ export const SFirstContainer = css`
 
 export const SSecondContainer = css`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     
     margin-top: 12px;
@@ -53,7 +54,7 @@ export const SSecondContainer = css`
 
 export const SThirdContainer = css`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     
     margin-top: 10px;

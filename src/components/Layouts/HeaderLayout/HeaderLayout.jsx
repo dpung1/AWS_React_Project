@@ -12,7 +12,9 @@ function HeaderLayout(props) {
             <div css={S.SContainer}>
                 <div css={S.SBrandLogo}>
                     <SiNaver css={S.SLogoIcon}/>
-                    <span css={S.SLogoName}>MY플레이스</span>
+                    <div>
+                        <span css={S.SLogoName}>MY플레이스</span>
+                    </div>
                 </div>
                 <div css={S.RightMenus}>
                     <div css={S.SCoupon}>
