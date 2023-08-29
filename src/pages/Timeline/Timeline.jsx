@@ -3,19 +3,12 @@ import React from 'react';
 import { css } from "@emotion/react";
 import * as S from "./Style"
 import { BsFlagFill } from "react-icons/bs"
-import HeaderLayout from '../../components/Layouts/HeaderLayout/HeaderLayout';
-import ProfileLayout from '../../components/Layouts/ProfileLayout/ProfileLayout';
-import PagesChangeLayout from '../../components/Layouts/PagesChangeLayout/PagesChangeLayout';
 import MainContainer from '../../components/Containers/MainContainer/MainContainer';
-import BottomLayout from '../../components/Layouts/BottomLayout/BottomLayout';
-import img from "../../assets/timeline.png"
+import img from "../../assets/page/timeline.png"
 
 function Timeline(props) {
     return (
-        <div>
-            <HeaderLayout />
-            <ProfileLayout />
-            <PagesChangeLayout />
+        <>
             <MainContainer>
             <div css={S.SContainer}>
                 <div css={S.SFlagIconBox}>
@@ -38,8 +31,7 @@ function Timeline(props) {
                 <button css={S.SButton}>리뷰 참여하기</button>
             </div>
             </MainContainer>
-            <BottomLayout />
-        </div>
+        </>
     );
 }
 

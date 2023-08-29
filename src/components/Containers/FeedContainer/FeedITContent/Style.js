@@ -184,7 +184,7 @@ export const SText = css`
 export const STagContainer = css`
     display: flex;
 
-    margin-top: 8px;
+    margin-top: 5px;
     height: 33px;
 `;
 

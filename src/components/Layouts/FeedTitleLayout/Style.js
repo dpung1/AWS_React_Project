@@ -14,7 +14,6 @@ export const SContainer = css`
     width: 720px;
     height: 48px;
     overflow-x: auto;
-    
     ::-webkit-scrollbar {
         display: none;
     }
@@ -26,6 +25,10 @@ export const SContent = css`
 `;
 
 export const SButtons = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     flex-shrink:  0;
     margin-right: 6px;
     padding: 0px 13px;
@@ -34,12 +37,17 @@ export const SButtons = css`
     height: 36px;
     font-size: 14px;
     font-weight: 500;
+    text-decoration: none;
     color: #666666;
     background-color: transparent;
     cursor: pointer;
 `;
 
 export const SButtonsSelect = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     flex-shrink:  0;
     margin-right: 6px;
     padding: 0px 13px;
@@ -48,8 +56,11 @@ export const SButtonsSelect = css`
     height: 36px;
     font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
     color: #ffffff;
     background-color: #424242;
     cursor: pointer;
 `;
+
+
 

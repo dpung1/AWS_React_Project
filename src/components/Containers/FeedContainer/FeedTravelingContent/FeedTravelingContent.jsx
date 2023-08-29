@@ -2,16 +2,16 @@ import React from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
-import profile from "../../../assets/profile2.jpeg"
-import Img from "../../../assets/react.png"
-import Img2 from "../../../assets/react book.jpeg"
-import Img3 from "../../../assets/com.jpeg"
+import profile from "../../../../assets/profile/ra.jpeg"
+import Img from "../../../../assets/Feed/big.jpeg"
+import Img2 from "../../../../assets/Feed/mu.jpeg"
+import Img3 from "../../../../assets/Feed/sky.jpeg"
 import { GoSmiley } from "react-icons/go"
 import { BsChevronRight } from "react-icons/bs"
 import { PiStarThin } from "react-icons/pi"
 import { HiLocationMarker } from "react-icons/hi"
 
-function FeedContainer(props) {
+function FeedTravelingContent(props) {
     return (
         <ul css={S.SLayout}>
             <li css={S.SListContainer}>
@@ -20,8 +20,8 @@ function FeedContainer(props) {
                         <div css={S.SInfoContainer}>
                             <img src={profile} css={S.SImgsBox}/>
                             <div css={S.STextBox}>
-                                <span css={S.SName}>React F***</span>
-                                <span css={S.SReviewAndFollower}>사진리뷰 ♾️ ∙ 팔로워 ♾️</span>
+                                <span css={S.SName}>DP</span>
+                                <span css={S.SReviewAndFollower}>사진리뷰 ∞ ∙ 팔로워 ∞</span>
                             </div>
                         </div>
                         <div css={S.SFollowBox}>
@@ -40,34 +40,34 @@ function FeedContainer(props) {
                             </div>
                             <button css={S.SLocation}>
                                 <HiLocationMarker css={S.SLocationIcon}/>
-                                <span css={S.SLocationText}>부산광역시 부산진구 최신</span>
+                                <span css={S.SLocationText}>제주시 과거</span>
                                 </button>
                         </button>
                     </div>
                     <div css ={S.STextContent}>
                         <span css={S.SText}>
-                            2023년 8월 28일 React -완- 다시는 하기 싫어요~ㅎㅎ
+                            작년 제주도 어딘지 기억은 안나지만 돌아다닌곳 🚗
                         </span>
                     </div>
                     <div css={S.STagContainer}>
-                        <span css={S.STagContent}>😡 어려워요</span>
-                        <span css={S.STagContent}>🐗 책표지가 멧돼지에요</span>
-                        <span css={S.STagContent}>👩‍💻 시간이 잘가요</span>
-                        <span css={S.STagContent}>📂 폴더가 많아요</span>
-                        <span css={S.STagContent}>😑 보는건 편해요</span>
+                        <span css={S.STagContent}>😎 더워요</span>
+                        <span css={S.STagContent}>🖼️ 뷰가 좋아요</span>
+                        <span css={S.STagContent}>👀 볼거리가 많아요</span>
+                        <span css={S.STagContent}>😄 재밌어요</span>
+                        <span css={S.STagContent}>📸 사진이에요</span>
                     </div>
                     <div css={S.SReactionContainer}>
                         <div css={S.SReactionRight}>
                             <GoSmiley css={S.SSmileIcon}/>
                             <span css={S.SReactionText}>반응 남기기</span>
                         </div>
-                        <span css={S.SDayDate}>8.28 월 완료</span>
+                        <span css={S.SDayDate}>작년 8월쯤 방문</span>
                     </div>
                     <div css={S.SLocationContainer}>
                         <div css={S.SLocationContent}>
                             <div css={S.SLocationLeft}>
-                                <span css={S.SLocationTopText}>코리아IT 코딩아카데미 부산점 <BsChevronRight css={S.SIcon}/></span>
-                                <span css={S.SLocationDownText}>IT교육 ∙ 부산광역시 부산진구 부전동</span>
+                                <span css={S.SLocationTopText}>제주도<BsChevronRight css={S.SIcon}/></span>
+                                <span css={S.SLocationDownText}>여행 ∙ 제주 어디쯤</span>
                             </div>
                             <div css={S.SLocationRight}>
                                 <PiStarThin css={S.SStarIcon}/>
@@ -79,8 +79,7 @@ function FeedContainer(props) {
             </li>
             <div css={S.SBoundary}></div>
         </ul>
-        
     );
 }
 
-export default FeedContainer;
+export default FeedTravelingContent;

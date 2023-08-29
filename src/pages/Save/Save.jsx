@@ -3,19 +3,12 @@ import React from 'react';
 import { css } from "@emotion/react";
 import * as S from "./Style"
 import { BsFlagFill } from "react-icons/bs"
-import HeaderLayout from '../../components/Layouts/HeaderLayout/HeaderLayout';
-import ProfileLayout from '../../components/Layouts/ProfileLayout/ProfileLayout';
-import PagesChangeLayout from '../../components/Layouts/PagesChangeLayout/PagesChangeLayout';
 import MainContainer from '../../components/Containers/MainContainer/MainContainer';
-import BottomLayout from '../../components/Layouts/BottomLayout/BottomLayout';
-import img from "../../assets/savepage.png"
+import img from "../../assets/page/savepage.png"
 
 function Save(props) {
     return (
-        <div>
-            <HeaderLayout />
-            <ProfileLayout />
-            <PagesChangeLayout />
+        <>
             <MainContainer>
             <div css={S.SContainer}>
                 <div css={S.SFlagIconBox}>
@@ -38,8 +31,7 @@ function Save(props) {
                 </div>
             </div>
             </MainContainer>
-            <BottomLayout />    
-        </div>
+        </>
     );
 }
 

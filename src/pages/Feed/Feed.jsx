@@ -1,23 +1,26 @@
 import React from 'react';
-import HeaderLayout from '../../components/Layouts/HeaderLayout/HeaderLayout';
-import ProfileLayout from '../../components/Layouts/ProfileLayout/ProfileLayout';
-import PagesChangeLayout from '../../components/Layouts/PagesChangeLayout/PagesChangeLayout';
-import BottomLayout from '../../components/Layouts/BottomLayout/BottomLayout';
 import FeedHeaderLayout from '../../components/Layouts/FeedHeaderLayout/FeedHeaderLayout';
 import FeedTitleLayout from '../../components/Layouts/FeedTitleLayout/FeedTitleLayout';
-import FeedContainer from '../../components/Containers/FeedContainer/FeedContainer';
+import FeedITContent from '../../components/Containers/FeedContainer/FeedITContent/FeedITContent';
+import FeedTravelingContent from '../../components/Containers/FeedContainer/FeedTravelingContent/FeedTravelingContent';
+import { useSearchParams } from 'react-router-dom';
 
 function Feed(props) {
+    const [ searchParams, setSearchParams ] = useSearchParams();
+
+    const category = searchParams.get("category");
+
     return (
-        <div>
-            <HeaderLayout />
-            <ProfileLayout />
-            <PagesChangeLayout />
+        <>
             <FeedHeaderLayout />
             <FeedTitleLayout />
-            <FeedContainer />
-            <BottomLayout/>
-        </div>
+            {!category && (<>
+                <FeedITContent />
+                <FeedTravelingContent />
+            </>)}
+            {category === "IT" && <FeedITContent />}
+            {category === "여행" && <FeedTravelingContent />}
+        </>
     );
 }
 

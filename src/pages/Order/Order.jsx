@@ -6,12 +6,9 @@ import OrderContainer from '../../components/Containers/OrderContainer/OrderCont
 
 function Order(props) {
     return (
-        <div>
-            <HeaderLayout />
-            <ProfileLayout />
-            <PagesChangeLayout />
+        <>
             <OrderContainer />
-        </div>
+        </>
     );
 }
 
