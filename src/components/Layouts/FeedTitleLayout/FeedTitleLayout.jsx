@@ -129,12 +129,37 @@ function FeedTitleLayout(props) {
         }
     };
 
+    useEffect(() => {
+        const selectedLinkName = searchParams.get("category");
+        // SBox의 div를 가져옴
+        const container = scrollRef.current;
+        // container안에 있는 모든 링크(a태크)를 가져옴
+        const links = container.querySelectorAll("a");
+        // links안에 값을 배열로 변환 후 link안에 있는 문자열을 가져와 selectedLinkName과 비교
+        const selectedLink = Array.from(links).find(link =>
+            link.textContent === selectedLinkName
+        );
+
+        if (selectedLink) {
+            // SBox의 넓이 값을 가져옴 (680px)
+            const containerWidth = container.offsetWidth;
+            // 각 link의 넓이 값을 가져옴 (margin제외한 넓이)
+            const linkWidth = selectedLink.offsetWidth;
+            // SContainer의 (0,0)기준으로 각링크의 (0,0)의 X축값
+            const linkLeft = selectedLink.offsetLeft;
+    
+            // 선택한 링크를 중앙으로 위치시키는 좌표
+            const scrollPosition = linkLeft - (containerWidth / 1.75) + (linkWidth / 2);
+            container.scrollLeft = scrollPosition;
+        }
+    });
+
     return (
         <div css={S.SLayout}>
             <div css={S.SContainer}>
                 <button css={S.SLeftButton} onClick={() => handleScroll(-720)}>⟨</button>
             <div css={S.SBox} ref={scrollRef}>
-                <div css={S.SContent}>
+                <div css={S.SContent} ref={scrollRef}>
                     {titles.map(title => <Link
                                             key={title.id}
                                             to={"/feed?category=" + title.name}
