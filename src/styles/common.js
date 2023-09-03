@@ -12,7 +12,7 @@ export const GSCommon = css`
         overflow-y: auto;
     }
 
-    *::-webkit-scrollbar {
+    /* *::-webkit-scrollbar {
         border: none;
         width: 6px;   
     }
@@ -20,7 +20,7 @@ export const GSCommon = css`
     *::-webkit-scrollbar-thumb {
         border-radius: 5px;
         background-color: #ccc;
-    }
+    } */
 
     
 `;
