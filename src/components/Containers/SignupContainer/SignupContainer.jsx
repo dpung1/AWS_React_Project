@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
+import { useNavigate } from 'react-router-dom';
 
 function SignupContainer(props) {
     const [ selectAllChecked, setSelectAllChecked ] = useState(false);

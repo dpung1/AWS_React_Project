@@ -4,10 +4,16 @@ import * as S from "./Style";
 import { AiOutlineDown, AiOutlineUser, AiOutlineLock} from 'react-icons/ai';
 import Img from "../../../assets/signin/signin.jpeg"
 import Img2 from "../../../assets/signin/스크린샷 2023-09-02 오후 7.15.24.png"
+import { useNavigate } from 'react-router-dom';
 
 function SigninContainer(props) {
     const [isIdContainerActive, setIdContainerActive] = useState(false);
     const [isPwContainerActive, setIsPwContainerActive] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSignupPageMoveClick = () => {
+        navigate('/signup')
+    }
 
     const handleInputFocus = (type) => {
         if (type === 'id') {
@@ -63,7 +69,7 @@ function SigninContainer(props) {
                 <div css={S.SBottom}>
                     <div css={S.SFText}>아이디 찾기</div>
                     <div css={S.STText}>비밀번호 찾기</div>
-                    <div css={S.STText}>회원가입</div>
+                    <div css={S.STText} onClick={handleSignupPageMoveClick}>회원가입</div>
                 </div>
                 <div css={S.SLast}>
                     <img css={S.SNaverImg} src={Img2} />

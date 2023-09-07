@@ -112,7 +112,7 @@ export const SChildrenBox = css`
     justify-content: center;
     align-items: center;
 
-    margin-left: 140px;
+    margin-left: 143px;
     
 `;
 

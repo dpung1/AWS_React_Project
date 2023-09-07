@@ -1,6 +1,6 @@
 import './App.css';
 import { Reset } from 'styled-reset';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Global } from '@emotion/react';
 import { GSCommon } from './styles/common';
 import Save from './pages/Save/Save';
@@ -14,9 +14,13 @@ import PagesChangeLayout from './components/Layouts/PagesChangeLayout/PagesChang
 import BottomLayout from './components/Layouts/BottomLayout/BottomLayout';
 import Signin from './pages/Signin/Signin';
 import SignupCheck from './pages/Signup/SignupCheck/SignupCheck';
+import SignupInfo from './pages/Signup/SignupInfo/SignupInfo';
 
 function App() {
-  const isSignInPage = window.location.pathname === '/signin';
+  const location = useLocation();
+  const isSigninPage = location.pathname === '/signin';
+  const isSignupPage = location.pathname === '/signup';
+  const isSignupInfoPage = location.pathname === '/signupinfo'
 
   return (
     <>
@@ -24,11 +28,11 @@ function App() {
       <Global styles={GSCommon} />
       {/* 페이지마다 중복되어 있는 값은 최상의 파일에 넣어줄것*/}
       {/* Router에는 렌더링 할거만 넣어줄것 */}
-      {isSignInPage ? null : (
+      {isSigninPage || isSignupPage || isSignupInfoPage ? null : (
         <>
-          {/* <HeaderLayout />
+          <HeaderLayout />
           <ProfileLayout />
-          <PagesChangeLayout /> */}
+          <PagesChangeLayout />
         </>
       )}
         <Routes>
@@ -41,8 +45,9 @@ function App() {
           <Route path='/save' element={ <Save />}/>
           <Route path='/signin' element={ <Signin />}/>
           <Route path='/signup' element={ <SignupCheck />}/>
+          <Route path='/signupinfo' element={ <SignupInfo />}/>
         </Routes>
-        {/* {isSignInPage ? null : <BottomLayout />} */}
+        {isSigninPage || isSignupPage || isSignupInfoPage ? null : <BottomLayout />}
     </>
   );
 }
