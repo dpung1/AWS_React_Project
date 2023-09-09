@@ -1,10 +1,6 @@
 package servlet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,9 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
-
-import com.google.gson.Gson;
 
 import entity.NaverPlaceUser;
 import repository.NaverPlaceRepository;

@@ -5,11 +5,38 @@ import { AiOutlineDown, AiOutlineUser, AiOutlineLock} from 'react-icons/ai';
 import Img from "../../../assets/signin/signin.jpeg"
 import Img2 from "../../../assets/signin/스크린샷 2023-09-02 오후 7.15.24.png"
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SigninContainer(props) {
+    const navigate = useNavigate();
     const [isIdContainerActive, setIdContainerActive] = useState(false);
     const [isPwContainerActive, setIsPwContainerActive] = useState(false);
-    const navigate = useNavigate();
+    const [ signinInput, setSigninInput ] = useState({
+        username: "",
+        password: ""
+    });
+
+    const handleInputOnChange = (e) => {
+        setSigninInput({
+            ...signinInput,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    const handleSigninClick = async () => {
+        try {
+            const response = await axios.post("http://localhost:8080/naver_place/auth/signin/", signinInput);
+
+            if(!!!response.data) {
+                alert("로그인 실패");
+                return;
+            }
+            alert("환영합니다.")
+            // navigate("/feed");
+        }catch(error) {
+            console.log(error)
+        }
+    }
 
     const handleSignupPageMoveClick = () => {
         navigate('/signup')
@@ -47,17 +74,27 @@ function SigninContainer(props) {
                     <div css={[S.SIdContainer, isIdContainerActive && S.SIdactive]}>
                         <AiOutlineUser css={S.SIdIcon} />
                         <div css={S.SIdBox}>
-                            <input type="text" placeholder="아이디" onFocus={() => handleInputFocus('id')} onBlur={() => handleInputBlur('id')} />
+                            <input type="text" 
+                                    name="username" 
+                                    placeholder="아이디" 
+                                    onFocus={() => handleInputFocus('id')} 
+                                    onBlur={() => handleInputBlur('id')} 
+                                    onChange={handleInputOnChange}/>
                         </div>
                     </div>
                     <div css={[S.SPwContainer, isPwContainerActive && S.SPwactive]}>
                         <div css={S.SPwBox}>
                             <AiOutlineLock css={S.SPwIcon}/>
-                            <input type="password" placeholder="비밀번호" onFocus={() => handleInputFocus('password')} onBlur={() => handleInputBlur('password')} />
+                            <input type="password" 
+                                    name="password" 
+                                    placeholder="비밀번호" 
+                                    onFocus={() => handleInputFocus('password')} 
+                                    onBlur={() => handleInputBlur('password')} 
+                                    onChange={handleInputOnChange}/>
                         </div>
                     </div>
                 </div>
-                <button css={S.SLoginButton}>로그인</button>
+                <button css={S.SLoginButton} onClick={handleSigninClick}>로그인</button>
                 <div css={S.SStateBox}>
                     <input type="checkbox" />
                     <p>로그인 상태 유지</p>

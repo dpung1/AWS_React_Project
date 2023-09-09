@@ -6,7 +6,7 @@ import lombok.Data;
 @Builder
 @Data
 public class NaverPlaceUser {
-	private	Integer userId;
+	private	int userId; 
 	private String username;
 	private String password;
 	private String email;
