@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.NaverInfo;
-import repository.NaverRepository;
+import entity.NaverPlaceUser;
+import repository.NaverPlaceRepository;
 import utils.ResponseUtil;
 
 @WebServlet("/auth/signup/duplicate/username")
@@ -21,31 +21,14 @@ public class DuplicateUsername extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String username = request.getParameter("username");
-		
 		Boolean responseData = false;
 		
-        NaverRepository repository = NaverRepository.getInstance();
-        List<NaverInfo> naverInfoList = repository.naverInfoAllList();
-//
-//        for (NaverInfo naverInfo : naverInfoList) {
-//            if (naverInfo.getNaverUsername().equals(username)) {
-//                ResponseUtil.reponse(response).of(400).body(true);
-//                return;
-//            }
-//        }
-//
-//        ResponseUtil.reponse(response).of(200).body(false);
-		
-		for(NaverInfo naverInfo : naverInfoList) {
-			if(naverInfo.getNaverUsername().equals(username)) {
-				responseData = true;
-				break;
-			}
+		if(NaverPlaceRepository.getInstance().duplicateUsername(username) != null) {
+			responseData = true;
+			return;
 		}
 		ResponseUtil.reponse(response).of(200).body(responseData);
     }
-
-
 }
 
 

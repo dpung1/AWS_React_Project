@@ -16,9 +16,8 @@ import javax.xml.crypto.Data;
 
 import com.google.gson.Gson;
 
-import data.NaverInfoData;
-import entity.NaverInfo;
-import repository.NaverRepository;
+import entity.NaverPlaceUser;
+import repository.NaverPlaceRepository;
 import utils.JsonParseUtil;
 import utils.ResponseUtil;
 
@@ -38,25 +37,20 @@ public class SignupServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Map<String, Object> useraMap = JsonParseUtil.toMap(request.getInputStream());
+		Map<String, Object> userMap = JsonParseUtil.toMap(request.getInputStream());
 		
-		List<NaverInfo> naverInfoList = NaverInfoData.naverInfoList;
+		NaverPlaceUser naverPlaceUser = NaverPlaceUser.builder()
+											.userId(userMap.size() + 1)
+											.username((String) userMap.get("username"))
+											.password((String) userMap.get("password"))
+											.email((String) userMap.get("email"))
+											.name((String) userMap.get("name"))
+											.birthday((String) userMap.get("birthday"))
+											.cellPhone((String) userMap.get("cellphone"))
+											.build();
 		
-		NaverInfo naverInfo = NaverInfo.builder()
-				.naverId(naverInfoList.size() + 1)
-				.naverUsername((String) useraMap.get("username"))
-				.naverPassword((String) useraMap.get("password"))
-				.naverEmail((String) useraMap.get("email"))
-				.naverName((String) useraMap.get("name"))
-				.naverBirthday((String) useraMap.get("birthday"))
-				.naverCellPhone((String) useraMap.get("cellphone"))
-				.build();
-		
-		naverInfoList.add(naverInfo);
-		
-		if(NaverRepository.naverInfoInsert(naverInfo)) {
+		if(NaverPlaceRepository.getInstance().naverPlaceInfoInsert(naverPlaceUser)) {
 			ResponseUtil.reponse(response).of(201).body(true);
-		
 		}
 	}
 }

@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Builder
 @Data
-public class NaverInfo {
-	private int naverId;
-	private String naverUsername;
-	private String naverPassword;
-	private String naverEmail;
-	private String naverName;
-	private String naverBirthday;
-	private String naverCellPhone;
+public class NaverPlaceUser {
+	private	Integer userId;
+	private String username;
+	private String password;
+	private String email;
+	private String name;
+	private String birthday;
+	private String cellPhone;
 }
