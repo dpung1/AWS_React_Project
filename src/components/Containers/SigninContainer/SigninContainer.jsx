@@ -9,8 +9,8 @@ import axios from 'axios';
 
 function SigninContainer(props) {
     const navigate = useNavigate();
-    const [isIdContainerActive, setIdContainerActive] = useState(false);
-    const [isPwContainerActive, setIsPwContainerActive] = useState(false);
+    const [ isIdContainerActive, setIdContainerActive ] = useState(false);
+    const [ isPwContainerActive, setIsPwContainerActive ] = useState(false);
     const [ signinInput, setSigninInput ] = useState({
         username: "",
         password: ""
@@ -19,13 +19,15 @@ function SigninContainer(props) {
     const handleInputOnChange = (e) => {
         setSigninInput({
             ...signinInput,
-            [e.target.name]: e.target.value
+            [ e.target.name ]: e.target.value
         });
     }
 
     const handleSigninClick = async () => {
         try {
-            const response = await axios.post("http://localhost:8080/naver_place/auth/signin/", signinInput);
+            const response = await axios.post("http://localhost:8080/naver_place/auth/signin", signinInput);
+            
+            console.log(response.data);
 
             if(!!!response.data) {
                 alert("로그인 실패");

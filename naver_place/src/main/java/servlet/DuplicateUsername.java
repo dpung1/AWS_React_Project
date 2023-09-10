@@ -18,9 +18,12 @@ public class DuplicateUsername extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String username = request.getParameter("username");
+		
+		System.out.println("아이디 : " + username);
 		Boolean responseData = NaverPlaceRepository.getInstance().duplicateUsername(username);
 		
-		System.out.println(responseData);
+		// 중복이면 true 아니면 false
+//		System.out.println(responseData);
 		
 		ResponseUtil.reponse(response).of(200).body(responseData);
     }

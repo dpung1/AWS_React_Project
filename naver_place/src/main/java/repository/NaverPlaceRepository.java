@@ -64,7 +64,7 @@ public class NaverPlaceRepository {
 		return false;
 	}
 	
-	// T, F로 반환하여 리턴값 Boolean
+	// T, F로 중복확인
 	public Boolean duplicateUsername(String username) {
 		
 		Connection con = null;
@@ -75,7 +75,7 @@ public class NaverPlaceRepository {
 			con = pool.getConnection();
 			
 			String sql = "select "
-							+ "user_id "
+							+ "user_id, "
 							+ "username "
 						+ "from "
 							+ "naverplace_tb "
@@ -98,10 +98,11 @@ public class NaverPlaceRepository {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		
-		// 중복된 같이 없으면 false
+		// 중복된 값이 없으면 false
 		return false;
 	}
 	
+	// 객체를 가져와서 확인하는 방법 
 	public NaverPlaceLoginUser naverSigninUser(NaverPlaceLoginUser naverPlaceLoginUser) {
 		 
 		Connection con = null;
@@ -113,9 +114,9 @@ public class NaverPlaceRepository {
 			con = pool.getConnection();
 			
 			String sql = "select "
-							+ "user_id "
-							+ "username "
-							+ "password"
+							+ "user_id, "
+							+ "username, "
+							+ "password "
 						+ "from "
 							+ "naverplace_tb "
 						+ "where "
@@ -133,17 +134,58 @@ public class NaverPlaceRepository {
 						.username(rs.getString(2))
 						.password(rs.getString(3))
 						.build();
+				
+				return idAndPassword;
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
 		
-		return idAndPassword;
-		
+		return null;
 	}
 	
-	
+	// T, F를 가져와서 확인하는 방법 
+	public Boolean naverSigninUser(String username, String password) {
+		 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "select "
+							+ "user_id, "
+							+ "username, "
+							+ "password "
+						+ "from "
+							+ "naverplace_tb "
+						+ "where "
+							+ "username = ? "
+							+ "and password = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		
+		return false;
+	} 
 	
 }
 

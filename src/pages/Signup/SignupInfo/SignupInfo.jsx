@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function SignupInfo(props) {
     const navigate = useNavigate();
 
+    const [ checked, setChecked ] = useState(true)
     const [ signupUser, setSignupUser ] = useState({
         username: "",
         password: "",
@@ -16,6 +17,10 @@ function SignupInfo(props) {
         birthday: "",
         cellphone: ""
     });
+
+    const clickedOnChange  = () => {
+        setChecked(!checked);
+    }
 
     const handleInputChange = async (e) => {
         setSignupUser({
@@ -52,7 +57,7 @@ function SignupInfo(props) {
                     throw new Error(response);
                 }
                 alert("회원가입 성공!");
-                // navigate("/signin");
+                navigate("/signin");
             }catch(error) {
                 console.log(error);
             };
@@ -160,7 +165,7 @@ function SignupInfo(props) {
                 </div>
                 <div css={S.SStateBox}>
                     <p>실명인증된 아이디로 가입</p>
-                    <input type="checkbox" checked={true} />
+                    <input type="checkbox" checked={checked} onChange={clickedOnChange}/>
                 </div>
                 <div css={S.STopJoin}>
                     <div css={[S.SFirstBox, isIdContainerActive && S.SIdactive]}>
