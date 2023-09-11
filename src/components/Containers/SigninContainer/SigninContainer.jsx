@@ -14,7 +14,7 @@ function SigninContainer(props) {
     const [ signinInput, setSigninInput ] = useState({
         username: "",
         password: ""
-    });
+    })
 
     const handleInputOnChange = (e) => {
         setSigninInput({

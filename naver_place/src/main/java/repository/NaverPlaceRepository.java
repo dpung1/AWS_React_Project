@@ -102,51 +102,51 @@ public class NaverPlaceRepository {
 		return false;
 	}
 	
-	// 객체를 가져와서 확인하는 방법 
-	public NaverPlaceLoginUser naverSigninUser(NaverPlaceLoginUser naverPlaceLoginUser) {
-		 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		NaverPlaceLoginUser idAndPassword = null;
-		
-		try {
-			con = pool.getConnection();
-			
-			String sql = "select "
-							+ "user_id, "
-							+ "username, "
-							+ "password "
-						+ "from "
-							+ "naverplace_tb "
-						+ "where "
-							+ "username = ? "
-							+ "and password = ?";
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, naverPlaceLoginUser.getUsername());
-			pstmt.setString(2, naverPlaceLoginUser.getPassword());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				idAndPassword = NaverPlaceLoginUser.builder()
-						.userId(rs.getInt(1))
-						.username(rs.getString(2))
-						.password(rs.getString(3))
-						.build();
-				
-				return idAndPassword;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
-		}
-		
-		return null;
-	}
+//	// 객체를 가져와서 확인하는 방법 
+//	public NaverPlaceLoginUser naverSigninUser(NaverPlaceLoginUser naverPlaceLoginUser) {
+//		 
+//		Connection con = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		NaverPlaceLoginUser idAndPassword = null;
+//		
+//		try {
+//			con = pool.getConnection();
+//			
+//			String sql = "select "
+//							+ "user_id, "
+//							+ "username, "
+//							+ "password "
+//						+ "from "
+//							+ "naverplace_tb "
+//						+ "where "
+//							+ "username = ? "
+//							+ "and password = ?";
+//			
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, naverPlaceLoginUser.getUsername());
+//			pstmt.setString(2, naverPlaceLoginUser.getPassword());
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				idAndPassword = NaverPlaceLoginUser.builder()
+//						.userId(rs.getInt(1))
+//						.username(rs.getString(2))
+//						.password(rs.getString(3))
+//						.build();
+//				
+//				return idAndPassword;
+//			}
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			
+//		} finally {
+//			pool.freeConnection(con, pstmt, rs);
+//		}
+//		
+//		return null;
+//	}
 	
 	// T, F를 가져와서 확인하는 방법 
 	public Boolean naverSigninUser(String username, String password) {
@@ -159,7 +159,6 @@ public class NaverPlaceRepository {
 			con = pool.getConnection();
 			
 			String sql = "select "
-							+ "user_id, "
 							+ "username, "
 							+ "password "
 						+ "from "
@@ -185,8 +184,8 @@ public class NaverPlaceRepository {
 		}
 		
 		return false;
-	} 
-	
+	}
+
 }
 
 

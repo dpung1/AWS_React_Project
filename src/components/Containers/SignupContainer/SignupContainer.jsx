@@ -22,6 +22,7 @@ function SignupContainer(props) {
             checkbox4: !allClicked,
             checkbox5: !allClicked
         })
+        console.log(allClicked);
     }
 
     const clickedOnChange = (e) => {
@@ -34,13 +35,17 @@ function SignupContainer(props) {
                 selectClicked.checkbox2 && 
                 selectClicked.checkbox3 && 
                 selectClicked.checkbox4 &&
-                selectClicked.checkbox5 === selectClicked) {
-                setAllClicked(allClicked)
-            } else {
-                setAllClicked(!allClicked)
+                selectClicked.checkbox5) {
+                setAllClicked(true)
             }
             
     }
+
+    console.log("ㅎㅇ",selectClicked.checkbox1 &&
+    selectClicked.checkbox2 && 
+    selectClicked.checkbox3 && 
+    selectClicked.checkbox4 &&
+    selectClicked.checkbox5);
 
     return (
         <div css={S.SLayout}>

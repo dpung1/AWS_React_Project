@@ -43,15 +43,19 @@ public class SigninServlet extends HttpServlet {
 		
 		// T, F로 가져와서 확인하는 방법
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		Map<String, Object> userMap = JsonParseUtil.toMap(request.getInputStream());
 		
-		// 값 왜 안들어가는거지? (포스맨은 들어가는데..)
-		System.out.println("아이디 : " + username);
-		System.out.println("패스워드 : " + password);
+		// String으로 값을 받아서 Json 형태로 
+		// Stirng 변수명 = request.getParameter("");
 		
-		NaverPlaceRepository.getInstance().naverSigninUser(username, password);
-
+		String username = (String)userMap.get("username");
+		String password = (String)userMap.get("password");
 		
+//		System.out.println("아이디 : " + username);
+//		System.out.println("패스워드 : " + password);
+		
+		Boolean responseData = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
+		
+		ResponseUtil.reponse(response).of(200).body(responseData);
 	}
 }
