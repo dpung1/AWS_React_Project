@@ -16,7 +16,7 @@ export const SHeaderContainer = css`
     display: flex;
     justify-content: flex-start;
     padding: 25px 115px 25px 20px;
-    width: 365px;
+    width: 500px;
 `;
 
 export const SHeader = css`
@@ -401,12 +401,15 @@ export const SCellPhoneactive = css`
 `;
 
 export const SButtonLayout = css`
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    margin-top: 349px;
     padding: 20px;
 `;
 

@@ -1,52 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
+import { useNavigate } from 'react-router-dom';
 
 function SignupContainer(props) {
-    const [ allClicked, setAllClicked ] = useState(false);
-    const [ selectClicked, setSelectClick ] = useState({
+    const navigate = useNavigate();
+
+    const [ allSelectClick, setAllSelectClick ] = useState(false);
+    const [ eachSelectClick, setEachSelectClick ] = useState({
         checkbox1: false,
         checkbox2: false,
         checkbox3: false,
-        checkbox4: false,
-        checkbox5: false
-    })
+        checkbox4: false, 
+        checkbox5: false,
+    });
 
-    const allClickedOnChange = () => {
-        setAllClicked(!allClicked)
-        setSelectClick({
-            checkbox1: !allClicked,
-            checkbox2: !allClicked,
-            checkbox3: !allClicked,
-            checkbox4: !allClicked,
-            checkbox5: !allClicked
+    const [ mode, setMode ] = useState(false);
+    
+    const allOnClickChange = () => {
+        const allChecked = !allSelectClick
+        setAllSelectClick(allChecked)
+        setEachSelectClick({
+            checkbox1: allChecked,
+            checkbox2: allChecked,
+            checkbox3: allChecked,
+            checkbox4: allChecked,
+            checkbox5: allChecked
         })
-        console.log(allClicked);
+    }
+    
+    const eachOnClickChange = (e) => {
+        const eachChecked = {
+            ...eachSelectClick,
+            [e.target.name]: !eachSelectClick[e.target.name]
+        }
+        setEachSelectClick(eachChecked)
+        
+        const eachAllChange = 
+            eachChecked.checkbox1 &&
+            eachChecked.checkbox2 &&
+            eachChecked.checkbox3 &&
+            eachChecked.checkbox4 &&
+            eachChecked.checkbox5;
+        
+        setAllSelectClick(eachAllChange)
     }
 
-    const clickedOnChange = (e) => {
-            setSelectClick({
-                ...selectClicked,
-                [e.target.name]: !selectClicked[e.target.name]
-            })
+    useEffect(() => {
+        const nextButtonChange = eachSelectClick.checkbox1 && eachSelectClick.checkbox2
+        setMode(nextButtonChange)
+    },[eachSelectClick.checkbox1, eachSelectClick.checkbox2])
 
-            if(selectClicked.checkbox1 &&
-                selectClicked.checkbox2 && 
-                selectClicked.checkbox3 && 
-                selectClicked.checkbox4 &&
-                selectClicked.checkbox5) {
-                setAllClicked(true)
-            }
-            
+    const handleSignInfoPageMoveClick = () => {
+        if(mode){
+            navigate('/signupinfo')
+        }
     }
-
-    console.log("ㅎㅇ",selectClicked.checkbox1 &&
-    selectClicked.checkbox2 && 
-    selectClicked.checkbox3 && 
-    selectClicked.checkbox4 &&
-    selectClicked.checkbox5);
-
+    
     return (
         <div css={S.SLayout}>
             <div css={S.SMainContainer}>
@@ -54,8 +65,8 @@ function SignupContainer(props) {
                     <div css={S.SCheckBox}>
                         <input type="checkbox"
                             name='allCheckbox'
-                            checked={allClicked}
-                            onChange={allClickedOnChange}/>
+                            checked={allSelectClick}
+                            onChange={allOnClickChange}/>
                         <span css={S.SAllConsentTitle}>전체 동의하기</span>
                     </div>
                     <span css={S.SAllConsentText}>실명 인증된 아이디로 가입, 위치기반서비스 이용약관(선택), 이벤트・혜택 정보 수신(선택) 동의를 포함합니다.</span>
@@ -64,8 +75,8 @@ function SignupContainer(props) {
                     <li css={S.SCheckBox}>
                         <input type="checkbox" 
                             name='checkbox1'
-                            checked={selectClicked.checkbox1}
-                            onChange={clickedOnChange}/>
+                            checked={eachSelectClick.checkbox1}
+                            onChange={eachOnClickChange}/>
                         <span css={S.SEssential}>[필수]</span>
                         <span css={S.STitleText}>네이버 이용약관</span>
                         <span css={S.SWhole}>전체 ⟩</span>
@@ -88,8 +99,8 @@ function SignupContainer(props) {
                     <li css={S.SCheckBox}>
                         <input type="checkbox" 
                             name='checkbox2'
-                            checked={selectClicked.checkbox2}
-                            onChange={clickedOnChange}/>
+                            checked={eachSelectClick.checkbox2}
+                            onChange={eachOnClickChange}/>
                         <span css={S.SEssential}>[필수]</span>
                         <span css={S.STitleText}>개인정보 수집 및 이용</span>
                         <span css={S.SWhole}>전체 ⟩</span>
@@ -108,8 +119,8 @@ function SignupContainer(props) {
                     <li css={S.SCheckBox}>
                         <input type="checkbox"
                             name='checkbox3'
-                            checked={selectClicked.checkbox3}
-                            onChange={clickedOnChange}/>
+                            checked={eachSelectClick.checkbox3}
+                            onChange={eachOnClickChange}/>
                         <span css={S.SSelect}>[선택]</span>
                         <span css={S.STitleText}>실명 인증된 아이디로 가입</span>
                     </li>
@@ -123,8 +134,8 @@ function SignupContainer(props) {
                     <li css={S.SCheckBox}>
                         <input type="checkbox"
                             name='checkbox4'
-                            checked={selectClicked.checkbox4}
-                            onChange={clickedOnChange}/>
+                            checked={eachSelectClick.checkbox4}
+                            onChange={eachOnClickChange}/>
                         <span css={S.SSelect}>[선택]</span>
                         <span css={S.STitleText}>위치기반서비스 이용약관</span>
                         <span css={S.SWhole}>전체 ⟩</span>
@@ -143,8 +154,8 @@ function SignupContainer(props) {
                     <li css={S.SCheckBox}>
                         <input type="checkbox"
                             name='checkbox5'
-                            checked={selectClicked.checkbox5}
-                            onChange={clickedOnChange}/>
+                            checked={eachSelectClick.checkbox5}
+                            onChange={eachOnClickChange}/>
                         <span css={S.SSelect}>[선택]</span>
                         <span css={S.STitleText}>이벤트・혜택 정보 수신</span>
                     </li>
@@ -160,6 +171,13 @@ function SignupContainer(props) {
                 <div>
                     <span css={S.SSpecialSignup}>단체, 비즈니스 회원 가입</span>
                     <button css={S.SSpecialButton}>⟩</button>
+                </div>
+            </div>
+            <div css={S.SBottomFixed}>
+                <div css={S.SBottomLayout}>
+                    <button css={S.SNextButton(mode)} 
+                            onClick={handleSignInfoPageMoveClick}>
+                    다음</button>
                 </div>
             </div>
         </div>

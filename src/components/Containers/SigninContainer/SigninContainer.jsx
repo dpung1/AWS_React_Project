@@ -34,7 +34,7 @@ function SigninContainer(props) {
                 return;
             }
             alert("환영합니다.")
-            // navigate("/feed");
+            navigate("/feed");
         }catch(error) {
             console.log(error)
         }
@@ -111,7 +111,8 @@ function SigninContainer(props) {
                     <div css={S.STText} onClick={handleSignupPageMoveClick}>회원가입</div>
                 </div>
                 <div css={S.SLast}>
-                    <img css={S.SNaverImg} src={Img2} />
+                    <div css={S.SNaverImg}></div>
+                    <div></div>
                     <div css={S.SText}>회원정보 고객센터</div>
                 </div>
             </div>

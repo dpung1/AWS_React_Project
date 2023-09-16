@@ -8,7 +8,7 @@ function SignupCheck(props) {
         <>
             <SignupHeaderLayout />
             <SignupContainer />
-            <SignupBottomLayout />
+            {/* <SignupBottomLayout /> */} 
         </>
     );
 }

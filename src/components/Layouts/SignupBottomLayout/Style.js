@@ -18,14 +18,14 @@ export const SLayout = css`
     padding: 20px;
 `;
 
-export const SNextButton = css`
+export const SNextButton = (mode) => css`
     border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
+    border-radius: 6px; 
     width: 460px;
     height: 52px;
     font-size: 18px;
     font-weight: 700;
     color: #ffffff;
-    background-color: #8990a0;
+    background-color: ${mode ? '#8990a0' : '#03c75a'};
     cursor: pointer;
 `;

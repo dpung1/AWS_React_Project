@@ -30,6 +30,7 @@ function SignupInfo(props) {
     }
 
     const handleSubmitClick = () => {
+        
         // 회원가입 요청
         const option = {
             params: {
@@ -41,10 +42,16 @@ function SignupInfo(props) {
                 cellphone: signupUser.cellphone
             }
         }
-
+        
         const signup = async () => {
             let response = await axios.get("http://localhost:8080/naver_place/auth/signup/duplicate/username", option)
-
+            
+            // if (!signupUser.username || !signupUser.password || !signupUser.name || 
+            //     !signupUser.birthday || !signupUser.cellphone) {
+            //         alert("회원가입 실패!!!")
+            //         return;
+            //     }
+            
             if(response.data) {
                 alert("중복된 아이디 입니다.");
                 return;
@@ -160,86 +167,86 @@ function SignupInfo(props) {
         <Global styles={css` body {background-color: #39393c;}`}/>
             <div css={S.SLayout}>
                 <div css={S.SContainer}>
-                <div css={S.SHeaderContainer}>
-                    <div css={S.SHeader}></div>
-                </div>
-                <div css={S.SStateBox}>
-                    <p>실명인증된 아이디로 가입</p>
-                    <input type="checkbox" checked={checked} onChange={clickedOnChange}/>
-                </div>
-                <div css={S.STopJoin}>
-                    <div css={[S.SFirstBox, isIdContainerActive && S.SIdactive]}>
-                        <div></div>
-                        <input type="text" 
-                            placeholder="아이디" 
-                            name="username" 
-                            onFocus={() => handleInputFocus('id')} 
-                            onBlur={() => handleInputBlur('id')} 
-                            onChange={handleInputChange}/>
-                        <p>@naver.com</p>
+                    <div css={S.SHeaderContainer}>
+                        <div css={S.SHeader}></div>
                     </div>
-                    <div css={[S.SSecondBox, isPwContainerActive && S.SPwactive]}>
-                        <div></div>
-                        <input type={isPasswordVisible ? 'text' : 'password'}
-                            placeholder="비밀번호"
-                            name="password"
-                            onFocus={() => handleInputFocus('password')} 
-                            onBlur={() => handleInputBlur('password')} 
-                            onChange={handleInputChange}/>
-                        <button
-                            css={isButtonFocused ? S.SButtonFocus : S.SButton}
-                            onClick={handleButtonClick}>
-                        </button>
+                    <div css={S.SStateBox}>
+                        <p>실명인증된 아이디로 가입</p>
+                        <input type="checkbox" checked={checked} onChange={clickedOnChange}/>
                     </div>
-                    <div css={[S.SThirdBox, isEmailContainerActive && S.SEmailactive]}>
-                        <div></div>
-                        <input type="text" 
-                            name="email"
-                            placeholder='[선택] 비밀번호 분실 시 확인용 이메일' 
-                            onFocus={() => handleInputFocus('email')} 
-                            onBlur={() => handleInputBlur('email')}
-                            onChange={handleInputChange}/>
-                    </div>
-                </div>
-                <div css={S.SBottomContainer}>
-                    <div css={[S.SBottomFirstBox, isNameContainerActive && S.SNameactive]}>
-                        <div></div>
-                        <input type="text" 
-                            placeholder="이름" 
-                            name="name"
-                            onFocus={() => handleInputFocus('name')} 
-                            onBlur={() => handleInputBlur('name')} 
-                            onChange={handleInputChange}/>
-                    </div>
-                    <div css={[S.SBottomSecondBox, isBirthdayContainerActive && S.SBirthdayactive]}>
-                        <div></div>
-                        <input type="text" 
-                        placeholder='생년월일 8자리' 
-                        name="birthday"
-                        onFocus={() => handleInputFocus('birthday')} 
-                        onBlur={() => handleInputBlur('birthday')} 
-                        onChange={handleInputChange}/>
-                    </div>
-                    <div css={S.SBottomThirdBox}>
-                        <div css={S.SGender}>
-                            <button css={[S.SLeftButton, isManActive && S.SManactive]} onClick={() => handleGenderClick('남자')}>남자</button>
-                            <button css={[S.SRightButton, isWomanActive && S.SWomanactive]} onClick={() => handleGenderClick('여자')}>여자</button>
+                    <div css={S.STopJoin}>
+                        <div css={[S.SFirstBox, isIdContainerActive && S.SIdactive]}>
+                            <div></div>
+                            <input type="text" 
+                                placeholder="아이디" 
+                                name="username" 
+                                onFocus={() => handleInputFocus('id')} 
+                                onBlur={() => handleInputBlur('id')} 
+                                onChange={handleInputChange}/>
+                            <p>@naver.com</p>
                         </div>
-                        <div css={S.SForeigner}>
-                            <button css={[S.SLeftButton, isLocalActive && S.SLocalactive]} onClick={() => handleForegignerClick('내국인')}>내국인</button>
-                            <button css={[S.SRightButton, isForeignerActive && S.SForeigneractive]} onClick={() => handleForegignerClick('외국인')}>외국인</button>
+                        <div css={[S.SSecondBox, isPwContainerActive && S.SPwactive]}>
+                            <div></div>
+                            <input type={isPasswordVisible ? 'text' : 'password'}
+                                placeholder="비밀번호"
+                                name="password"
+                                onFocus={() => handleInputFocus('password')} 
+                                onBlur={() => handleInputBlur('password')} 
+                                onChange={handleInputChange}/>
+                            <button
+                                css={isButtonFocused ? S.SButtonFocus : S.SButton}
+                                onClick={handleButtonClick}>
+                            </button>
+                        </div>
+                        <div css={[S.SThirdBox, isEmailContainerActive && S.SEmailactive]}>
+                            <div></div>
+                            <input type="text" 
+                                name="email"
+                                placeholder='[선택] 비밀번호 분실 시 확인용 이메일' 
+                                onFocus={() => handleInputFocus('email')} 
+                                onBlur={() => handleInputBlur('email')}
+                                onChange={handleInputChange}/>
                         </div>
                     </div>
-                    <div css={[S.SBottomFourthBox, isCellPhoneContainerActive && S.SCellPhoneactive]}>
-                        <div></div>
-                        <input type="text" 
-                        placeholder='휴대전화번호'
-                        name="cellphone"
-                        onFocus={() => handleInputFocus('cellphone')} 
-                        onBlur={() => handleInputBlur('cellphone')} 
-                        onChange={handleInputChange}/>
+                    <div css={S.SBottomContainer}>
+                        <div css={[S.SBottomFirstBox, isNameContainerActive && S.SNameactive]}>
+                            <div></div>
+                            <input type="text" 
+                                placeholder="이름" 
+                                name="name"
+                                onFocus={() => handleInputFocus('name')} 
+                                onBlur={() => handleInputBlur('name')} 
+                                onChange={handleInputChange}/>
+                        </div>
+                        <div css={[S.SBottomSecondBox, isBirthdayContainerActive && S.SBirthdayactive]}>
+                            <div></div>
+                            <input type="text" 
+                            placeholder='생년월일 8자리' 
+                            name="birthday"
+                            onFocus={() => handleInputFocus('birthday')} 
+                            onBlur={() => handleInputBlur('birthday')} 
+                            onChange={handleInputChange}/>
+                        </div>
+                        <div css={S.SBottomThirdBox}>
+                            <div css={S.SGender}>
+                                <button css={[S.SLeftButton, isManActive && S.SManactive]} onClick={() => handleGenderClick('남자')}>남자</button>
+                                <button css={[S.SRightButton, isWomanActive && S.SWomanactive]} onClick={() => handleGenderClick('여자')}>여자</button>
+                            </div>
+                            <div css={S.SForeigner}>
+                                <button css={[S.SLeftButton, isLocalActive && S.SLocalactive]} onClick={() => handleForegignerClick('내국인')}>내국인</button>
+                                <button css={[S.SRightButton, isForeignerActive && S.SForeigneractive]} onClick={() => handleForegignerClick('외국인')}>외국인</button>
+                            </div>
+                        </div>
+                        <div css={[S.SBottomFourthBox, isCellPhoneContainerActive && S.SCellPhoneactive]}>
+                            <div></div>
+                            <input type="text" 
+                            placeholder='휴대전화번호'
+                            name="cellphone"
+                            onFocus={() => handleInputFocus('cellphone')} 
+                            onBlur={() => handleInputBlur('cellphone')} 
+                            onChange={handleInputChange}/>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
             <div css={S.SButtonLayout}>

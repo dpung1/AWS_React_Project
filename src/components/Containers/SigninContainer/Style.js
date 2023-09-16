@@ -81,6 +81,7 @@ export const SIdBox = css`
     justify-content: flex-start;
     align-items: center;
     padding: 15px 35px 15px 50px;
+
     & input {
         padding: 0px;
         border: none;
@@ -90,6 +91,9 @@ export const SIdBox = css`
         color: rgb(48, 48, 56);
         font-weight: 600;
         font-size: 16px;
+    }
+
+    & input::placeholder {
         opacity: 0.25;
     }
 `;
@@ -125,6 +129,7 @@ export const SPwBox = css`
     justify-content: flex-start;
     align-items: center;
     padding: 15px 35px 15px 50px;
+
     & input {
         padding: 0px;
         border: none;
@@ -134,6 +139,9 @@ export const SPwBox = css`
         color: rgb(48, 48, 56);
         font-weight: 600;
         font-size: 16px;
+    }
+
+    & input::placeholder {
         opacity: 0.25;
     }
 `;
@@ -267,17 +275,20 @@ export const SLast = css`
 
 export const SNaverImg = css`
     width: 56px;
-    height: 23px;
-    padding-right: 10px;
-    border-right: 1px solid rgb(218, 218, 218);
-    border-radius: 0.5px;
+    height: 11px;
+    
+    margin-right: 10px;
+    background-image: url(https://ssl.pstatic.net/static/nid/login/m_sp_00_common_2c6b6c08.png);
+    background-size: 115px 98px;
+    background-position: -42px -16px;
 `;
 
 export const SText = css`
     font-size: 13px;
     color: rgb(146, 146, 148);
-    padding: 0px 10px;
+    border-left: 1px solid rgb(218, 218, 218);
     border-radius: 0.5px;
+    padding: 0px 10px;
     letter-spacing: -0.5px;
     font-weight: 600;
 `;
