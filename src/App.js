@@ -15,12 +15,14 @@ import BottomLayout from './components/Layouts/BottomLayout/BottomLayout';
 import Signin from './pages/Signin/Signin';
 import SignupCheck from './pages/Signup/SignupCheck/SignupCheck';
 import SignupInfo from './pages/Signup/SignupInfo/SignupInfo';
+import ModifyAndDelete from './pages/ModifyAndDelete/ModifyAndDelete';
 
 function App() {
   const location = useLocation();
   const isSigninPage = location.pathname === '/signin';
   const isSignupPage = location.pathname === '/signup';
   const isSignupInfoPage = location.pathname === '/signupinfo'
+  const isProfileSettingPage = location.pathname === '/profilesetting'
 
   return (
     <>
@@ -28,7 +30,7 @@ function App() {
       <Global styles={GSCommon} />
       {/* 페이지마다 중복되어 있는 값은 최상의 파일에 넣어줄것*/}
       {/* Router에는 렌더링 할거만 넣어줄것 */}
-      {isSigninPage || isSignupPage || isSignupInfoPage ? null : (
+      {isSigninPage || isSignupPage || isSignupInfoPage || isProfileSettingPage ? null : (
         <>
           <HeaderLayout />
           <ProfileLayout />
@@ -46,8 +48,9 @@ function App() {
           <Route path='/signin' element={ <Signin />}/>
           <Route path='/signup' element={ <SignupCheck />}/>
           <Route path='/signupinfo' element={ <SignupInfo />}/>
+          <Route path='/profilesetting' element={ <ModifyAndDelete/> }/>
         </Routes>
-        {isSigninPage || isSignupPage || isSignupInfoPage ? null : <BottomLayout />}
+        {isSigninPage || isSignupPage || isSignupInfoPage || isProfileSettingPage ? null : <BottomLayout />}
     </>
   );
 }

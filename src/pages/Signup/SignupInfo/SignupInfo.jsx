@@ -46,30 +46,27 @@ function SignupInfo(props) {
         const signup = async () => {
             let response = await axios.get("http://localhost:8080/naver_place/auth/signup/duplicate/username", option)
             
-            // if (!signupUser.username || !signupUser.password || !signupUser.name || 
-            //     !signupUser.birthday || !signupUser.cellphone) {
-            //         alert("회원가입 실패!!!")
-            //         return;
-            //     }
-            
             if(response.data) {
                 alert("중복된 아이디 입니다.");
                 return;
             };
-
+            
             try{
                 response = await axios.post("http://localhost:8080/naver_place/auth/signup", signupUser)
-                
+
                 if(!response.data) {
-                    throw new Error(response);
+                    throw new Error(response)
                 }
+
                 alert("회원가입 성공!");
                 navigate("/signin");
+
             }catch(error) {
+                alert("회원가입 실패!")
                 console.log(error);
             };
         };
-
+        
         signup();
     }
 

@@ -32,6 +32,7 @@ public class SignupServlet extends HttpServlet {
 		
 		Map<String, Object> userMap = JsonParseUtil.toMap(request.getInputStream());
 		
+		
 		NaverPlaceUser naverPlaceUser = NaverPlaceUser.builder()
 											.userId(userMap.size() + 1)
 											.username((String) userMap.get("username"))

@@ -33,6 +33,16 @@ public class NaverPlaceRepository {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
+		String usernmae = naverPlaceUser.getUsername().trim();
+		String password = naverPlaceUser.getPassword().trim();
+		String name = naverPlaceUser.getName().trim();
+		String birthday = naverPlaceUser.getBirthday().trim();
+		String cellphone = naverPlaceUser.getCellPhone().trim();
+		
+		if(usernmae.isEmpty() || password.isEmpty() || name.isEmpty() || birthday.isEmpty() || cellphone.isEmpty()) {
+			return false;
+		}
+		
 		try {
 			con = pool.getConnection();
 			
@@ -41,12 +51,12 @@ public class NaverPlaceRepository {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, naverPlaceUser.getUsername());
-			pstmt.setString(2, naverPlaceUser.getPassword());
+			pstmt.setString(1, usernmae);
+			pstmt.setString(2, password);
 			pstmt.setString(3, naverPlaceUser.getEmail());
-			pstmt.setString(4, naverPlaceUser.getName());
-			pstmt.setString(5, naverPlaceUser.getBirthday());
-			pstmt.setString(6, naverPlaceUser.getCellPhone());
+			pstmt.setString(4, name);
+			pstmt.setString(5, birthday);
+			pstmt.setString(6, cellphone);
 			
 			int result = pstmt.executeUpdate();
 			
