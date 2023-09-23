@@ -5,12 +5,23 @@ import * as S from "./Style"
 import { SiNaver } from "react-icons/si"
 import { BsTicket } from "react-icons/bs"
 import { HiMenu } from "react-icons/hi"
+import { useNavigate } from 'react-router-dom';
 
 function HeaderLayout(props) {
+    const navigate = useNavigate();
+
+    const pageMoveOnClick = () => {
+        navigate("/profilesetting")
+    }
+
+    const goHomeOnClick = () => {
+        navigate("/feed")
+    }
+
     return (
         <div css={S.SLayout}>
             <div css={S.SContainer}>
-                <div css={S.SBrandLogo}>
+                <div css={S.SBrandLogo} onClick={goHomeOnClick}>
                     <SiNaver css={S.SLogoIcon}/>
                     <div>
                         <span css={S.SLogoName}>MY플레이스</span>
@@ -21,7 +32,7 @@ function HeaderLayout(props) {
                         <BsTicket css={S.SCouponIcon}/>
                         <span css={S.SCouponName}>쿠폰</span>
                     </div>
-                    <HiMenu css={S.SMenuIcon}/>
+                    <HiMenu css={S.SMenuIcon} onClick={pageMoveOnClick}/>
                 </div>
             </div>
         </div>

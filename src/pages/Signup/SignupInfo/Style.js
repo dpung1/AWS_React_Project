@@ -26,6 +26,7 @@ export const SHeader = css`
     background-size: 372px 326px;
     width: 95px;
     height: 18px;
+    cursor: pointer;
 `;
 
 export const SStateBox = css`

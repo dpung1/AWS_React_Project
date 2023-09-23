@@ -62,7 +62,7 @@ function SignupInfo(props) {
                 navigate("/signin");
 
             }catch(error) {
-                alert("회원가입 실패!")
+                alert("정보를 입력해주세요.")
                 console.log(error);
             };
         };
@@ -159,13 +159,17 @@ function SignupInfo(props) {
         }
     };
 
+    const pageMoveOnClick = () => {
+        navigate("/feed")
+    }
+
     return (
         <div>
         <Global styles={css` body {background-color: #39393c;}`}/>
             <div css={S.SLayout}>
                 <div css={S.SContainer}>
                     <div css={S.SHeaderContainer}>
-                        <div css={S.SHeader}></div>
+                        <div css={S.SHeader} onClick={pageMoveOnClick}></div>
                     </div>
                     <div css={S.SStateBox}>
                         <p>실명인증된 아이디로 가입</p>
