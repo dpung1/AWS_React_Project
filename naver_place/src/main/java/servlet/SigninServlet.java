@@ -2,7 +2,9 @@ package servlet;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.NaverPlaceLoginUser;
 import repository.NaverPlaceRepository;
+import security.Authentication;
+import security.SecurityContextHolder;
 import utils.JsonParseUtil;
 import utils.ResponseUtil;
 
@@ -22,7 +26,7 @@ public class SigninServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 객체로 가져와서 확인하는 방
+		// 객체로 가져와서 확인하는 방법 
 //		Map<String, Object> signinUser = JsonParseUtil.toMap(request.getInputStream());
 //		
 //		NaverPlaceLoginUser naverPlaceLoginUser = NaverPlaceLoginUser.builder()
@@ -44,6 +48,7 @@ public class SigninServlet extends HttpServlet {
 		// T, F로 가져와서 확인하는 방법
 		
 		Map<String, Object> userMap = JsonParseUtil.toMap(request.getInputStream());
+		Map<String, String> responseData = new HashMap<>();
 		
 		// String으로 값을 받아서 Json 형태로 
 		// Stirng 변수명 = request.getParameter("");
@@ -54,8 +59,14 @@ public class SigninServlet extends HttpServlet {
 //		System.out.println("아이디 : " + username);
 //		System.out.println("패스워드 : " + password);
 		
-		Boolean responseData = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
+		Boolean SigninCheck = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
 		
-		ResponseUtil.reponse(response).of(200).body(responseData);
+		if(SigninCheck) { 
+            String token = UUID.randomUUID().toString();
+			SecurityContextHolder.addAuth(new Authentication(null, token));
+            responseData.put("token", token);
+		}
+		
+		ResponseUtil.reponse(response).of(200).body(SigninCheck);
 	}
 }

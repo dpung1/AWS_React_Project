@@ -11,6 +11,9 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import security.SecurityContextHolder;
+import utils.ResponseUtil;
+
 
 @WebFilter("*")
 public class SecurityFilter extends HttpFilter implements Filter {
@@ -31,12 +34,18 @@ public class SecurityFilter extends HttpFilter implements Filter {
 				return;
 			}
 		
-			String UserInfo = req.getHeader("Authentication");
-			System.out.println(UserInfo);
+		}
+		
+		String token = req.getHeader("Authentication");
+		System.out.println(token);
+		
+		if(!req.getMethod().equalsIgnoreCase("options") && !SecurityContextHolder.isAuthenticated(token)) {
+			ResponseUtil.reponse(resq).of(401).body("인증 실패");
+			return;
 			
 		}
 
-	 chain.doFilter(request, response);
+		chain.doFilter(request, response);
 	}
 
 }

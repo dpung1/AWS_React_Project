@@ -20,7 +20,11 @@ function ModifyAndDelete(props) {
     useEffect(() => {
         const getProfileData = async() => {
             try {
-                const response = await axios.get(`http:/localhost:8080/naver_place/profilesetting/profileSetting`);
+                const response = await axios.get(`http:/localhost:8080/naver_place/profilesetting/profileSetting`,{
+                    headers: {
+                        Authorization: localStorage.getItem("token")
+                    }
+                });
                 setProfileSetting(response.data);
             }catch(error) {
                 console.log(error)

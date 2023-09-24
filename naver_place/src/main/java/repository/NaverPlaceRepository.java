@@ -195,6 +195,61 @@ public class NaverPlaceRepository {
 		
 		return false;
 	}
+	
+public boolean naverPlaceInfoUpdate(NaverPlaceUser naverPlaceUser) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String usernmae = naverPlaceUser.getUsername().trim();
+		String password = naverPlaceUser.getPassword().trim();
+		String name = naverPlaceUser.getName().trim();
+		String birthday = naverPlaceUser.getBirthday().trim();
+		String cellphone = naverPlaceUser.getCellPhone().trim();
+		
+		if(usernmae.isEmpty() || password.isEmpty() || name.isEmpty() || birthday.isEmpty() || cellphone.isEmpty()) {
+			return false;
+		}
+		
+		try {
+			con = pool.getConnection();
+			
+			String sql = "update naverplace_tb "
+			          + "set "
+			            + "username = ?, "
+			            + "password = ?, "
+			            + "email = ?, "
+			            + "name = ?, "
+			            + "birthday = ?, "
+			            + "cellphone = ? "
+			          + "where "
+			            + "user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, usernmae);
+			pstmt.setString(2, password);
+			pstmt.setString(3, naverPlaceUser.getEmail());
+			pstmt.setString(4, name);
+			pstmt.setString(5, birthday);
+			pstmt.setString(6, cellphone);
+			pstmt.setInt(7, naverPlaceUser.getUserId()); 
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		
+		return false;
+	} 
 
 }
 
