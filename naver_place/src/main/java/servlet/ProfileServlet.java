@@ -17,7 +17,7 @@ import utils.JsonParseUtil;
 import utils.ResponseUtil;
 
 
-@WebServlet("/profilesetting/profile")
+@WebServlet("/mypage/profile")
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
