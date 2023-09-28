@@ -6,8 +6,11 @@ import { GoChevronLeft } from "react-icons/go"
 import { FaCamera } from "react-icons/fa"
 import profile from "../../assets/profile/profile.png"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function ModifyAndDelete(props) {
+    const navigate = useNavigate();
+
     const [ profileSetting, setProfileSetting ] = useState({
         username: "",
         password: "",
@@ -15,12 +18,17 @@ function ModifyAndDelete(props) {
         name: "",
         birthday: "",
         cellphone: ""
-    })
+    });
+
+    const goBackOnClick = () => {
+        navigate("/");
+    }
+
 
     useEffect(() => {
         const getProfileData = async() => {
             try {
-                const response = await axios.get(`http:/localhost:8080/naver_place/profilesetting/profileSetting`,{
+                const response = await axios.get(`http:/localhost:8080/naver_place/mypage/profile`,{
                     headers: {
                         Authorization: localStorage.getItem("token")
                     }
@@ -33,10 +41,34 @@ function ModifyAndDelete(props) {
         getProfileData();
     }, [])
 
+    const handleInputChange = (e) => {
+        setProfileSetting({
+            ...profileSetting,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleUpdateOnClick = () => {
+        const submit = async () => {
+            const option = {
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            }
+            const response = await axios.put("http:/localhost:8080/naver_place/mypage/profile", profileSetting, option);
+            if(response.data) {
+                alert("수정완료!!")
+                navigate("/mypage");
+                return;
+            }
+        }
+        submit();
+    }
+
     return (
         <>
             <div css={S.SLayout}>
-                <div css={S.SHeaderBox}>
+                <div css={S.SHeaderBox} onClick={goBackOnClick}>
                     <GoChevronLeft css={S.SHaederIcon}/>
                     <span css={S.SHeaderText}>프로필 설정</span>
                 </div>
@@ -54,6 +86,7 @@ function ModifyAndDelete(props) {
                         name='username'
                         placeholder='한글,영문,숫자,공백 2~20까지 입력할수 있어요.'
                         value={profileSetting?.username}
+                        onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
                 <div css={S.SInputBox}>
@@ -62,6 +95,7 @@ function ModifyAndDelete(props) {
                         name='password' 
                         placeholder=''
                         value={profileSetting?.password}
+                        onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
                 <div css={S.SInputBox}>
@@ -70,6 +104,7 @@ function ModifyAndDelete(props) {
                         name='email' 
                         placeholder=''
                         value={profileSetting?.email}
+                        onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
                 <div css={S.SInputBox}>
@@ -78,6 +113,7 @@ function ModifyAndDelete(props) {
                         name='name' 
                         placeholder=''
                         value={profileSetting?.name}
+                        onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
                 <div css={S.SInputBox}>
@@ -86,6 +122,7 @@ function ModifyAndDelete(props) {
                         name='birthday' 
                         placeholder=''
                         value={profileSetting?.birthday}
+                        onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
                 <div css={S.SInputBox}>
@@ -94,6 +131,7 @@ function ModifyAndDelete(props) {
                         name='cellphone' 
                         placeholder=''
                         value={profileSetting?.cellphone}
+                        onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
                 <div css={S.SDeleteBox}>
@@ -102,7 +140,7 @@ function ModifyAndDelete(props) {
                 </div>
             </div>
             <div css={S.SButtonLayout}>
-                <button css={S.SNextButton}>수정하기</button>
+                <button css={S.SNextButton} onClick={handleUpdateOnClick} >수정하기</button>
             </div>
         </>
     );

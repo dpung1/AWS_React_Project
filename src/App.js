@@ -22,7 +22,7 @@ function App() {
   const isSigninPage = location.pathname === '/signin';
   const isSignupPage = location.pathname === '/signup';
   const isSignupInfoPage = location.pathname === '/signupinfo'
-  const isProfileSettingPage = location.pathname === '/profilesetting'
+  const isMyPage = location.pathname === '/mypage'
 
   return (
     <>
@@ -30,7 +30,7 @@ function App() {
       <Global styles={GSCommon} />
       {/* 페이지마다 중복되어 있는 값은 최상의 파일에 넣어줄것*/}
       {/* Router에는 렌더링 할거만 넣어줄것 */}
-      {isSigninPage || isSignupPage || isSignupInfoPage || isProfileSettingPage ? null : (
+      {isSigninPage || isSignupPage || isSignupInfoPage || isMyPage ? null : (
         <>
           <HeaderLayout />
           <ProfileLayout />
@@ -48,9 +48,9 @@ function App() {
           <Route path='/signin' element={ <Signin />}/>
           <Route path='/signup' element={ <SignupCheck />}/>
           <Route path='/signupinfo' element={ <SignupInfo />}/>
-          <Route path='/profilesetting' element={ <ModifyAndDelete/> }/>
+          <Route path='/mypage' element={ <ModifyAndDelete/> }/>
         </Routes>
-        {isSigninPage || isSignupPage || isSignupInfoPage || isProfileSettingPage ? null : <BottomLayout />}
+        {isSigninPage || isSignupPage || isSignupInfoPage || isMyPage ? null : <BottomLayout />}
     </>
   );
 }

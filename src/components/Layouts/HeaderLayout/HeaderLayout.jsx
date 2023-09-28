@@ -11,7 +11,7 @@ function HeaderLayout(props) {
     const navigate = useNavigate();
 
     const pageMoveOnClick = () => {
-        navigate("/profilesetting")
+        navigate("/mypage")
     }
 
     const goHomeOnClick = () => {

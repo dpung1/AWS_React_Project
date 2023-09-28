@@ -12,6 +12,7 @@ export const SHeaderBox = css`
     align-items: center;
 
     height: 57px;
+    cursor: pointer;
 `;
 
 export const SHaederIcon = css`
