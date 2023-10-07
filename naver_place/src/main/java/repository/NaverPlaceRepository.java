@@ -169,8 +169,7 @@ public class NaverPlaceRepository {
 			con = pool.getConnection();
 			
 			String sql = "select "
-							+ "username, "
-							+ "password "
+							+ "* "
 						+ "from "
 							+ "naverplace_tb "
 						+ "where "

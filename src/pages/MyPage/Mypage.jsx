@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import * as S from "./Style"
@@ -8,62 +8,7 @@ import profile from "../../assets/profile/profile.png"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function ModifyAndDelete(props) {
-    const navigate = useNavigate();
-
-    const [ profileSetting, setProfileSetting ] = useState({
-        username: "",
-        password: "",
-        email: "",
-        name: "",
-        birthday: "",
-        cellphone: ""
-    });
-
-    const goBackOnClick = () => {
-        navigate("/");
-    }
-
-    useEffect(() => {
-        const getProfileData = async() => {
-            try {
-                const response = await axios.get(`http:/localhost:8080/naver_place/mypage/profile`,{
-                    headers: {
-                        Authorization: localStorage.getItem("token")
-                    }
-                });
-                setProfileSetting(response.data);
-            }catch(error) {
-                console.log(error)
-            }
-        }
-        getProfileData();
-    }, [])
-
-    const handleInputChange = (e) => {
-        setProfileSetting({
-            ...profileSetting,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleUpdateOnClick = () => {
-        const submit = async () => {
-            const option = {
-                headers: {
-                    Authorization: localStorage.getItem("token")
-                }
-            }
-            const response = await axios.put("http:/localhost:8080/naver_place/mypage/profile", profileSetting, option);
-            if(response.data) {
-                alert("수정완료!!")
-                navigate("/mypage");
-                return;
-            }
-        }
-        submit();
-    }
-
+function Mypage(props) {
     return (
         <>
             <div css={S.SLayout}>
@@ -145,4 +90,4 @@ function ModifyAndDelete(props) {
     );
 }
 
-export default ModifyAndDelete;
+export default Mypage;

@@ -33,6 +33,8 @@ function SigninContainer(props) {
                 alert("로그인 실패");
                 return;
             }
+            const responsess = localStorage.setItem("token", response.data?.token)
+            console.log(responsess)
             alert("환영합니다.")
             navigate("/feed");
         }catch(error) {

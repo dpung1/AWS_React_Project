@@ -4,6 +4,7 @@ package servlet;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.NaverPlaceLoginUser;
+import entity.NaverPlaceUser;
 import repository.NaverPlaceRepository;
 import security.Authentication;
 import security.SecurityContextHolder;
@@ -47,26 +49,31 @@ public class SigninServlet extends HttpServlet {
 		
 		// T, F로 가져와서 확인하는 방법
 		
-		Map<String, Object> userMap = JsonParseUtil.toMap(request.getInputStream());
+		Map<String, Object> signinUser = JsonParseUtil.toMap(request.getInputStream());
 		Map<String, String> responseData = new HashMap<>();
 		
 		// String으로 값을 받아서 Json 형태로 
 		// Stirng 변수명 = request.getParameter("");
 		
-		String username = (String)userMap.get("username");
-		String password = (String)userMap.get("password");
+		String username = (String)signinUser.get("username");
+		String password = (String)signinUser.get("password");
+		
 		
 //		System.out.println("아이디 : " + username);
 //		System.out.println("패스워드 : " + password);
 		
+		// 
 		Boolean SigninCheck = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
 		
-		if(SigninCheck) { 
-            String token = UUID.randomUUID().toString();
-			SecurityContextHolder.addAuth(new Authentication(null, token));
-            responseData.put("token", token);
-		}
+		//
+		if(SigninCheck) {
+			String token = UUID.randomUUID().toString();
+			NaverPlaceUser naverplaceuser = null;
+			Authentication authentication = new Authentication(naverplaceuser, token);
+			SecurityContextHolder.addAuth(authentication);
+			responseData.put("token", token);
+		} 
 		
-		ResponseUtil.reponse(response).of(200).body(SigninCheck);
+		ResponseUtil.reponse(response).of(200).body(JsonParseUtil.toJson(responseData));
 	}
 }

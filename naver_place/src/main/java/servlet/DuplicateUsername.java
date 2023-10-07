@@ -19,7 +19,7 @@ public class DuplicateUsername extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		
-		System.out.println("아이디 : " + username);
+//		System.out.println("아이디 : " + username);
 		Boolean responseData = NaverPlaceRepository.getInstance().duplicateUsername(username);
 		
 		// 중복이면 true 아니면 false
