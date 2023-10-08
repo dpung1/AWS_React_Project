@@ -4,65 +4,60 @@ import { css } from "@emotion/react";
 import * as S from "./Style"
 import { GoChevronLeft } from "react-icons/go"
 import { FaCamera } from "react-icons/fa"
-import profile from "../../assets/profile/profile.png"
+import profileImg from "../../assets/profile/profile.png"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function ModifyAndDelete(props) {
     const navigate = useNavigate();
 
-    const [ profileSetting, setProfileSetting ] = useState({
-        username: "",
-        password: "",
-        email: "",
-        name: "",
-        birthday: "",
-        cellphone: ""
-    });
-
+    const [ profile, setProfile ] = useState();
+    
     const goBackOnClick = () => {
-        navigate("/");
+        navigate("/mypage");
     }
 
-    useEffect(() => {
-        const getProfileData = async() => {
-            try {
-                const response = await axios.get(`http:/localhost:8080/naver_place/mypage/profile`,{
-                    headers: {
-                        Authorization: localStorage.getItem("token")
-                    }
-                });
-                setProfileSetting(response.data);
-            }catch(error) {
-                console.log(error)
-            }
-        }
-        getProfileData();
-    }, [])
-
     const handleInputChange = (e) => {
-        setProfileSetting({
-            ...profileSetting,
+        setProfile({
+            ...profile,
             [e.target.name]: e.target.value
-        })
+        });
     }
 
     const handleUpdateOnClick = () => {
-        const submit = async () => {
+        const submit = async() => {
             const option = {
                 headers: {
                     Authorization: localStorage.getItem("token")
                 }
             }
-            const response = await axios.put("http:/localhost:8080/naver_place/mypage/profile", profileSetting, option);
+            const response = await axios.put("http://localhost:8080/naver_place/mypage/profile", profile, option);
             if(response.data) {
-                alert("수정완료!!")
+                alert("수정 완료!!");
                 navigate("/mypage");
                 return;
             }
         }
         submit();
     }
+
+    useEffect(() => {
+        const getProfileData = async() => {
+            try {
+                const response = await axios.get("http://localhost:8080/naver_place/mypage/profile", {
+                    headers: {
+                        Authorization: localStorage.getItem("token")
+                    }
+                });
+                setProfile(response.data);
+            }catch(error) {
+                console.log(error)
+            }
+        }
+        getProfileData();
+    }, []);
+
+    
 
     return (
         <>
@@ -74,7 +69,7 @@ function ModifyAndDelete(props) {
             </div>
             <div css={S.SProfileImgBox}>
                 <div css={S.SProfileImgContainer}>
-                    <img src={profile} css={S.SProfileImg}/>
+                    <img src={profileImg} css={S.SProfileImg}/>
                     <span css={S.SCameraIconBox}><FaCamera css={S.SCameraIcon}/></span>
                 </div>
             </div>
@@ -84,7 +79,7 @@ function ModifyAndDelete(props) {
                     <input type="text" 
                         name='username'
                         placeholder='한글,영문,숫자,공백 2~20까지 입력할수 있어요.'
-                        value={profileSetting?.username}
+                        defaultValue={profile?.username}
                         onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
@@ -93,7 +88,7 @@ function ModifyAndDelete(props) {
                     <input type="password" 
                         name='password' 
                         placeholder=''
-                        value={profileSetting?.password}
+                        defaultValue={profile?.password}
                         onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
@@ -102,7 +97,7 @@ function ModifyAndDelete(props) {
                     <input type="text" 
                         name='email' 
                         placeholder=''
-                        value={profileSetting?.email}
+                        defaultValue={profile?.email}
                         onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
@@ -111,7 +106,7 @@ function ModifyAndDelete(props) {
                     <input type="text" 
                         name='name' 
                         placeholder=''
-                        value={profileSetting?.name}
+                        defaultValue={profile?.name}
                         onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
@@ -120,7 +115,7 @@ function ModifyAndDelete(props) {
                     <input type="text" 
                         name='birthday' 
                         placeholder=''
-                        value={profileSetting?.birthday}
+                        defaultValue={profile?.birthday}
                         onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>
@@ -129,7 +124,7 @@ function ModifyAndDelete(props) {
                     <input type="text" 
                         name='cellphone' 
                         placeholder=''
-                        value={profileSetting?.cellphone}
+                        value={profile?.cellphone}
                         onChange={handleInputChange}
                         css={S.SNameInput}/>
                 </div>

@@ -98,7 +98,7 @@ export const SInfoTitles = css`
     color: #8f8f8f;
 `;
 
-export const SNameInput = css`
+export const SInfoInput = css`
     width: 678px;
     padding: 0px 15px 0px 15px;
     min-height: 50px;
@@ -106,27 +106,6 @@ export const SNameInput = css`
     border: none;
     border-radius: 8px;
     background-color: #f4f7f8;
-`;
-
-export const SDeleteBox = css`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 678px;
-    margin-top: 20px;
-`;
-
-export const SDeleteIcon = css`
-    font-size: 20px;
-    color: #767676;
-`;
-
-export const SDeleteButton = css`
-    margin: 2px 0px 0px -5px;
-    border: none;
-    font-size: 15px;
-    color: #767676;
-    background-color: transparent;
 `;
 
 export const SButtonLayout = css`

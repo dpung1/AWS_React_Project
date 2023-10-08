@@ -4,7 +4,6 @@ package servlet;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.NaverPlaceLoginUser;
 import entity.NaverPlaceUser;
 import repository.NaverPlaceRepository;
 import security.Authentication;
@@ -66,14 +64,15 @@ public class SigninServlet extends HttpServlet {
 		Boolean SigninCheck = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
 		
 		//
-		if(SigninCheck) {
-			String token = UUID.randomUUID().toString();
-			NaverPlaceUser naverplaceuser = null;
-			Authentication authentication = new Authentication(naverplaceuser, token);
-			SecurityContextHolder.addAuth(authentication);
-			responseData.put("token", token);
-		} 
+//		if(SigninCheck) {
+//			String token = UUID.randomUUID().toString();
+//			NaverPlaceUser naverplaceuser = null;
+//			Authentication authentication = new Authentication(naverplaceuser, token);
+//			SecurityContextHolder.addAuth(authentication);
+//			responseData.put("token", token);
+//		} 
 		
-		ResponseUtil.reponse(response).of(200).body(JsonParseUtil.toJson(responseData));
+		// 갑자기 왜 전부다 로그인이 되는가? 
+		ResponseUtil.reponse(response).of(200).body(SigninCheck);
 	}
 }

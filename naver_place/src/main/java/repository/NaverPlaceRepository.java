@@ -3,12 +3,9 @@ package repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import config.DBConnectionMgr;
 import entity.NaverPlaceUser;
-import entity.NaverPlaceLoginUser;
 
 
 public class NaverPlaceRepository {
