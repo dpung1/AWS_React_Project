@@ -31,11 +31,12 @@ function Mypage(props) {
     useEffect(() => {
         const getProfileData = async() => {
             try {
-                const response = await axios.get(`http://localhost:8080/naver_place/mypage/profile`,{
+                const response = await axios.get(`http://localhost:8080/naver_place/mypage/profile`, {
                     headers: {
                         Authorization: localStorage.getItem("token")
                     }
                 });
+                console.log(response.data);
                 setProfile(response.data);
             }catch(error) {
                 console.log(error)

@@ -26,6 +26,38 @@ public class SigninServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Map<String, Object> signinUserData = JsonParseUtil.toMap(request.getInputStream());
+		
+		NaverPlaceUser naverPlaceUser = NaverPlaceUser.builder()
+												.userId(signinUserData.size())
+												.username((String) signinUserData.get("username"))
+												.password((String) signinUserData.get("password"))
+												.email((String) signinUserData.get("email"))
+												.name((String) signinUserData.get("name"))
+												.birthday((String) signinUserData.get("birthday"))
+												.cellPhone((String) signinUserData.get("cellphone"))
+												.build();
+		
+		
+		Map<String, String> responseData = new HashMap<>();
+		
+		if(NaverPlaceRepository.getInstance().naverSignin(naverPlaceUser) != null) {
+			String token = UUID.randomUUID().toString();
+			SecurityContextHolder.addAuth(new Authentication(naverPlaceUser, token));
+			System.out.println(NaverPlaceRepository.getInstance().naverSignin(naverPlaceUser));
+			responseData.put("token", token);
+			
+			ResponseUtil.reponse(response).of(200).body(JsonParseUtil.toJson(responseData));
+			return;
+		}
+		
+		ResponseUtil.reponse(response).of(401).body(null);
+		
+		
+		
+		
+		
 		// 객체로 가져와서 확인하는 방법 
 //		Map<String, Object> signinUser = JsonParseUtil.toMap(request.getInputStream());
 //		
@@ -47,31 +79,21 @@ public class SigninServlet extends HttpServlet {
 		
 		// T, F로 가져와서 확인하는 방법
 		
-		Map<String, Object> signinUser = JsonParseUtil.toMap(request.getInputStream());
-		Map<String, String> responseData = new HashMap<>();
+//		Map<String, Object> signinUser = JsonParseUtil.toMap(request.getInputStream());
+//		Map<String, String> responseData = new HashMap<>();
 		
 		// String으로 값을 받아서 Json 형태로 
 		// Stirng 변수명 = request.getParameter("");
 		
-		String username = (String)signinUser.get("username");
-		String password = (String)signinUser.get("password");
+//		String username = (String)signinUser.get("username");
+//		String password = (String)signinUser.get("password");
 		
 		
 //		System.out.println("아이디 : " + username);
 //		System.out.println("패스워드 : " + password);
 		
-		// 
-		Boolean SigninCheck = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
-		
-		//
-		if(SigninCheck) {
-			String token = UUID.randomUUID().toString();
-			NaverPlaceUser naverplaceuser = null;
-			Authentication authentication = new Authentication(naverplaceuser, token);
-			SecurityContextHolder.addAuth(authentication);
-			responseData.put("token", token);
-		} 
-		
-		ResponseUtil.reponse(response).of(200).body(JsonParseUtil.toJson(responseData));
+//		Boolean SigninCheck = NaverPlaceRepository.getInstance().naverSigninUser(username, password);
+//		
+//		ResponseUtil.reponse(response).of(200).body(SigninCheck);
 	}
 }

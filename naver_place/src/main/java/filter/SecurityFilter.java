@@ -21,7 +21,7 @@ public class SecurityFilter extends HttpFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resq = (HttpServletResponse) response;
+		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		String rootPath = "/naver_place";
 		String[] antMatchers = {"/auth"};
@@ -36,11 +36,11 @@ public class SecurityFilter extends HttpFilter implements Filter {
 		
 		}
 		
-		String token = req.getHeader("Authentication");
+		String token = req.getHeader("Authorization");
 //		System.out.println(token);
 		
 		if(!req.getMethod().equalsIgnoreCase("options") && !SecurityContextHolder.isAuthenticated(token)) {
-			ResponseUtil.reponse(resq).of(401).body("인증 실패");
+			ResponseUtil.reponse(resp).of(401).body("인증 실패");
 			return;
 			
 		}

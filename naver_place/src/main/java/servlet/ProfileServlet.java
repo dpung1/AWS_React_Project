@@ -28,10 +28,12 @@ public class ProfileServlet extends HttpServlet {
 		
 		NaverPlaceUser naverPlaceUser = SecurityContextHolder.findAuthenticationByToken(token).getNaverPlaceUser();
 		
+		System.out.println("2:" + naverPlaceUser);
+		
 		ResponseUtil.reponse(response).of(200).body(JsonParseUtil.toJson(naverPlaceUser));
 		
-
 	}
+
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
